@@ -11,10 +11,28 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    password: {
+    telegram: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    about: {
         type: String,
         required: true,
     },
+    skills: {
+        type: Array
+    },
+    finishedProjects: {
+        type: Array
+    },
+    currentProjects: {
+        type: Array
+    },
+    password: {
+        type: String,
+        required: true,
+    }
 });
 
 const User = mongoose.model('User', userSchema);
