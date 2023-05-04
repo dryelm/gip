@@ -30,12 +30,12 @@ router.post('/', async (req, res) => {
 });
 
 // Получение информации о проекте по ID
-router.get('/:id', getProject, (req, res) => {
+router.get('/projects/:id', getProject, (req, res) => {
     res.json(res.project);
 });
 
 // Обновление информации о проекте по ID
-router.patch('/:id', getProject, async (req, res) => {
+router.patch('/projects/:id', getProject, async (req, res) => {
     if (req.body.name != null) {
         res.project.name = req.body.name;
     }
@@ -57,7 +57,7 @@ router.patch('/:id', getProject, async (req, res) => {
 });
 
 // Удаление проекта по ID
-router.delete('/:id', getProject, async (req, res) => {
+router.delete('/projects/:id', getProject, async (req, res) => {
     try {
         await res.project.remove();
         res.json({ message: 'Project deleted' });

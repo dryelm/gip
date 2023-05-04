@@ -13,12 +13,9 @@ const userSchema = new mongoose.Schema({
     },
     telegram: {
         type: String,
-        required: true,
-        unique: true,
     },
     about: {
         type: String,
-        required: true,
     },
     skills: {
         type: Array
