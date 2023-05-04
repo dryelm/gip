@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.idea-search-page{
+    height: 100vh;
+    background: white;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    z-index: 2;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 50px;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    list-style: none;
+    margin-right: 40px;
+}
+
+.nav li:last-child {
+    margin-right: 0;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #CCCCCC;
+    transition: color 0.2s;
+}
+
+.nav a:hover {
+    color: #666666;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.nav a.active {
+    color: #333333;
+    opacity: 1;
+}
+
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative; /* added position */
+}
+
+.search input[type="text"] {
+    display: inline-block;
+    border: 2px solid #666666;
+    border-radius: 0;
+    padding: 10px;
+    font-size: 16px;
+    width: 500px; /* adjust as needed */
+    height: 50px;
+    margin-right: 0; /* adjust as needed */
+}
+
+.search button {
+    display: inline-block;
+    border: none;
+    background-color: #23A6F0;
+    color: white;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    padding: 0; /* remove padding */
+    margin: 0; /* remove margins */
+}
+
+.search input[type="text"]:focus {
+    outline: none;
+    border-color: #333333;
+}
+
+.search button i {
+    font-size: 18px;
+}
+
+
+.search button:hover {
+    opacity: 0.8;
+}
+
+.fa-search {
+    font-size: 18px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    z-index: 0;
+}
+.sidebar-block {
+    margin-bottom: 20px;
+}
+.filter h3, .search-bar h3, .skills h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+.search-bar form {
+    display: flex;
+    align-items: center;
+}
+.search-bar input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #23A6F0;
+}
+.search-bar button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #23A6F0;
+    color: #fff;
+    cursor: pointer;
+}
+.skills li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.sidebar-block.skills {
+    height: 300px;
+}
+
+.skills-list {
+    overflow-y: scroll; /* Add scrollable content */
+}
+.skills label {
+    margin-left: 10px;
+}
+.count {
+    margin-left: auto;
+    color: #23A6F0;
+}
+.apply button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #23A6F0;
+    color: #fff;
+    cursor: pointer;
+}
+@media (max-width: 767px) {
+    .sidebar {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 300px;
+        padding: 20px;
+        background-color: #f5f5f5;
+        z-index: 1;
+    }
+    .sidebar.active {
+        display: block;
+    }
+}
+
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .search input[type="text"] {
+        width: 150px;
+    }
+
+    .search button {
+        margin-left: -30px;
+        padding: 8px;
+    }
+
+    .fa-search {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo img {
+        height: 40px;
+        margin-right: 20px;
+    }
+
+    .nav li {
+        margin-right: 10px;
+    }
+
+    .search input[type="text"] {
+        width: 100px;
+    }
+
+    .search button {
+        margin-left: -20px;
+        padding: 6px;
+    }
+
+    .fa-search {
+        font-size: 12px;
+    }
+}
+
+
