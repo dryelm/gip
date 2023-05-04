@@ -61,7 +61,6 @@ header {
     opacity: 1;
 }
 
-
 .search {
     display: flex;
     align-items: center;
@@ -117,23 +116,28 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
+    margin-top: 6%;
+    height: 80%;
     width: 300px;
     padding: 20px;
     background-color: #f5f5f5;
     z-index: 0;
 }
+
 .sidebar-block {
     margin-bottom: 20px;
 }
+
 .filter h3, .search-bar h3, .skills h3 {
     margin: 0;
     margin-bottom: 10px;
 }
+
 .search-bar form {
     display: flex;
     align-items: center;
 }
+
 .search-bar input[type="text"] {
     flex: 1;
     padding: 10px;
@@ -154,20 +158,29 @@ header {
     align-items: center;
     margin-bottom: 5px;
 }
+
 .sidebar-block.skills {
     height: 300px;
+    margin-top: 10%;
+}
+
+.sidebar-block.filter {
+    margin-top: 10%;
 }
 
 .skills-list {
     overflow-y: scroll; /* Add scrollable content */
 }
+
 .skills label {
     margin-left: 10px;
 }
+
 .count {
     margin-left: auto;
     color: #23A6F0;
 }
+
 .apply button {
     padding: 10px;
     font-size: 16px;
@@ -176,6 +189,7 @@ header {
     color: #fff;
     cursor: pointer;
 }
+
 @media (max-width: 767px) {
     .sidebar {
         display: none;
