@@ -64,7 +64,7 @@ app.use('/login', loginRoutes);
 app.use('/projects', projectRoutes);
 app.use('/register', registerRoutes);
 
-
+app.set('views', './views')
 
 app.use((err, req, res, next) => {
     res.status(err.status || 500);

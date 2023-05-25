@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
 
     // Добавление нового пользователя в базу данных
     try {
+
         const user = new User({ username: username, email: email, password: hashedPassword });
         await user.save();
         res.redirect('/');

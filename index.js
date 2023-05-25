@@ -1,1 +1,1 @@
-alert('Hello, world!')
+alert('Ринат, к ноге!')

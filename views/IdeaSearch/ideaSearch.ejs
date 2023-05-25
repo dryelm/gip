@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ideas</title>
-    <link rel="stylesheet" href="ideaSearch.css">
+    <link rel="stylesheet" href="./ideaSearch.css">
 </head>
 <body>
 <div class="idea-search-page">
@@ -64,5 +64,20 @@
                 </div>
             </aside>
 </div>
+<ul>
+    <% if (projects) {
+    projects.forEach(function(project) { %>
+        <li><%= project.name %> <br>
+            <%= project.description %>
+            <ul>
+                <% if (project.skills) {
+                project.skills.forEach(function(skill) { %>
+                    <li><%= skill %></li>
+                <% });
+                }%>
+            </ul>
+        </li>
+    <% });}%>
+</ul>
 </body>
 </html>
