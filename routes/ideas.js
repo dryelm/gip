@@ -7,7 +7,7 @@ const Project = require('../models/IdeasDB');
 router.get('/', async (req, res) => {
     try {
         const projects = await Project.find();
-        res.render('IdeaSearch/ideaSearch', {projects});
+        res.render('IdeaSearch/ideaSearch', {projects, style: 'ideaSearch.css'});
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

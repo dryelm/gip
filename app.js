@@ -13,6 +13,7 @@ const ideasRoutes = require('./routes/ideas');
 const loginRoutes = require('./routes/login');
 const registerRoutes = require('./routes/register');
 const profileRoutes = require('./routes/profile');
+const path = require("path");
 
 const secret = crypto.randomBytes(64).toString('hex');
 app.use(session({
@@ -59,16 +60,16 @@ mongoose.connect(DB_URI, {
 })
     .then(() => console.log('Database connected!'))
     .catch((err) => console.log(err));
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
 app.use('/ideas', ideasRoutes);
 app.use('/register', registerRoutes);
 app.use('/profile', profileRoutes);
 
-app.set('views', './views');
+app.set('views', './views')
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({
         message: err.message,
