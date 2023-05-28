@@ -61,3 +61,12 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: blue;
 }
+
+a {
+    color: gray;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}
