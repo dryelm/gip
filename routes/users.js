@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('../models/UsersDB');
+
+
 
 // Получение данных пользователя
 router.get('/', async (req, res, next) => {
     try {
-        const user = await User.findById(req.session.userId);
+        const user = await User.findOne({username: req.session.passport.user.username}, {password: 0});
         if (!user) {
             return res.status(404).send('User not found');
         }

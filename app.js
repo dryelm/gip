@@ -7,11 +7,12 @@ const app = express();
 const session = require('express-session');
 const crypto = require('crypto');
 const { comparePasswords } = require("./hashing");
-const User = require('./models/User');
+const User = require('./models/UsersDB');
 const userRoutes = require('./routes/users');
-const projectRoutes = require('./routes/projects');
+const ideasRoutes = require('./routes/ideas');
 const loginRoutes = require('./routes/login');
 const registerRoutes = require('./routes/register');
+const profileRoutes = require('./routes/profile');
 
 const secret = crypto.randomBytes(64).toString('hex');
 app.use(session({
@@ -61,12 +62,13 @@ mongoose.connect(DB_URI, {
 
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
-app.use('/projects', projectRoutes);
+app.use('/ideas', ideasRoutes);
 app.use('/register', registerRoutes);
+app.use('/profile', profileRoutes);
 
-app.set('views', './views')
+app.set('views', './views');
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     res.status(err.status || 500);
     res.json({
         message: err.message,
@@ -75,7 +77,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.redirect('/ideas');
 });
 
 app.listen(PORT, () => {
