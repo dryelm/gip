@@ -13,6 +13,7 @@ const ideasRoutes = require('./routes/ideas');
 const loginRoutes = require('./routes/login');
 const registerRoutes = require('./routes/register');
 const profileRoutes = require('./routes/profile');
+const ideasAPI = require('./routes/api/ideasAPI')
 const path = require("path");
 
 const secret = crypto.randomBytes(64).toString('hex');
@@ -66,6 +67,8 @@ app.use('/login', loginRoutes);
 app.use('/ideas', ideasRoutes);
 app.use('/register', registerRoutes);
 app.use('/profile', profileRoutes);
+app.use('/api/ideas', ideasAPI);
+
 
 app.set('views', './views')
 

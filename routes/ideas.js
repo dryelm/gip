@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 const Project = require('../models/IdeasDB');
+const path = require("path");
 
 // Получение списка проектов
 router.get('/', async (req, res) => {
     try {
-        const projects = await Project.find();
-        res.render('IdeaSearch/ideaSearch', {projects, style: 'ideaSearch.css'});
+        res.sendFile(path.join(`${__dirname}`, '..', 'views', 'IdeaSearch', 'ideaSearch.html'));
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
