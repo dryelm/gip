@@ -66,18 +66,20 @@
                 </div>
             </aside>
 
-    <div id="projects">
+
+    <div id="projects" class="projects">
         <script id="template" type="text/x-handlebars-template">
             <ul>
                 {{#each projects}}
-                    <li>{{name}}<br>
-                        {{description}}
-                        <ul>
-                            {{#each skills}}
-                                <li>{{this}}</li>
-                            {{/each}}
-                        </ul>
-                    </li>
+                    <div class="project">
+                        <h3 class="project-name">{{name}}</h3><br>
+                            <h4 class="project-description">{{description}}</h4>
+                            <ul class="skills">
+                                {{#each skills}}
+                                    <li class="skill">{{this}}</li>
+                                {{/each}}
+                            </ul>
+                    </div>
                 {{/each}}
             </ul>
         </script>
