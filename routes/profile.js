@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/UsersDB');
+const path = require("path");
 
 router.get('/', async function (req, res) {
     if (req.isAuthenticated()){
@@ -18,7 +19,7 @@ router.get('/:username', async function (req, res) {
         res.status(404).send('User not found');
         return;
     }
-    res.json(user);
+    res.sendFile(path.join(`${__dirname}`, '..', 'views', 'PersonalAccount', 'personalAccount.html'));
     // res.render('PersonalAccount/personalAccount', {user: user});
 });
 
