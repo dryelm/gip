@@ -21,7 +21,11 @@ header {
     z-index: 2;
 }
 
-.logo img {
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    color: #252B42;
     height: 50px;
     margin-right: 50px;
 }
@@ -100,7 +104,6 @@ header {
     font-size: 18px;
 }
 
-
 .search button:hover {
     opacity: 0.8;
 }
@@ -113,13 +116,15 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: 1px solid gray;
+    border-radius: 10px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 1%;
     margin-top: 6%;
     height: 80%;
-    width: 300px;
-    padding: 20px;
+    width: 17%;
+    padding: 15px;
     background-color: #f5f5f5;
     z-index: 1;
 }
@@ -128,14 +133,18 @@ header {
     margin-bottom: 20px;
 }
 
-.filter h3, .search-bar h3, .skills h3 {
-    margin: 0;
-    margin-bottom: 10px;
+.idea-filter-text {
+    font-size: 30px;
+    color: #252B42;
+    border-bottom: 1px solid gray;
 }
 
-.search-bar form {
-    display: flex;
-    align-items: center;
+.skills-text {
+    font-size: 16px;
+}
+
+.filter h3, .skills h3 {
+    margin: 0 0 10px;
 }
 
 .search-bar input[type="text"] {
@@ -159,6 +168,34 @@ header {
     margin-bottom: 5px;
 }
 
+.skills-list ul {
+    margin-left: -15px;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    margin-right: 10px;
+}
+
+.skills {
+    margin-left: 1%;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.skills h3 {
+    margin-top: 9%;
+    margin-left: 8%;
+}
+
 .sidebar-block.skills {
     height: 300px;
     margin-top: 10%;
@@ -168,8 +205,17 @@ header {
     margin-top: 10%;
 }
 
+.sidebar-block.apply button{
+    margin-top: 30%;
+    margin-left: 20%;
+    border-radius: 5px;
+    width: 60%;
+    font-size: 20px;
+}
+
 .skills-list {
     overflow-y: scroll; /* Add scrollable content */
+    margin-right: 20px;
 }
 
 .skills label {
@@ -190,19 +236,53 @@ header {
     cursor: pointer;
 }
 
-.project {
+.idea {
     border: solid gray 1px;
     margin-top: 1%;
     margin-bottom: 1%;
     width: 95%;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+}
+
+.idea-name {
+    margin-bottom: 1%;
+}
+
+.idea-description {
+    width: 70%;
+}
+
+.idea-skills {
+    margin-top: 0.5%;
+    position: absolute;
+    left: 60%;
+}
+
+.idea-buttons button {
+    margin: 10px;
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    color: #f0f0f0;
+    border: none;
+}
+
+.idea-buttons .create {
+    background-color: #40BB15;
+}
+
+.idea-buttons .find {
+    background-color: #23A6F0;
 }
 
 .projects {
     position: absolute;
     left: 19%;
 }
-
-
 
 @media (max-width: 767px) {
     .sidebar {
@@ -248,8 +328,11 @@ header {
     }
 }
 
+
+
+
 @media screen and (max-width: 480px) {
-    .logo img {
+    .logo {
         height: 40px;
         margin-right: 20px;
     }
