@@ -9,4 +9,7 @@ const teamsSchema = new mongoose.Schema({
     members: { type: [String] },
 });
 
-module.exports = mongoose.model('Team', teamsSchema);
+
+const TeamsDB = mongoose.model('Team', teamsSchema);
+
+module.exports = TeamsDB;

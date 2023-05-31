@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require("path");
 const router = express.Router();
-const User = require('../models/UsersDB');
+const UsersDB = require('../models/UsersDB');
 const {hashPassword: hashPassword} = require('../hashing');
+const passport = require("passport");
 
 router.get('/', async (req, res) => {
     if (await req.isAuthenticated()){
@@ -27,7 +28,7 @@ router.post('/', async (req, res) => {
         return;
     }
 
-    if ((username.length < 4 || username.length > 20) && (/^[a-zA-Z0-9]+$/.test(username))) {
+    if ((username.length < 4 || username.length > 20) || !(/^[a-zA-Z0-9]+$/.test(username))) {
         await res.redirect('/register');
         return;
     }
@@ -40,14 +41,26 @@ router.post('/', async (req, res) => {
 
     // Добавление нового пользователя в базу данных
     try {
-        const user = new User({ username: username, email: email, password: hashedPassword });
+        const isExist = await UsersDB.findOne({$or: [{username: username}, {email: email}]});
+        if (isExist) {
+            res.redirect('/register');
+            return;
+        }
+        const user = new UsersDB({ username: username, email: email, password: hashedPassword });
         await user.save();
-        await res.redirect('/');
+
+
     } catch (err) {
         // Обработка ошибок при добавлении пользователя в базу данных
         console.error(err);
-        await res.redirect('/register');
+        await res.redirect('/');
     }
+
+    await req.login( {username, hashedPassword}, function(err) {
+        if (err) { return res.redirect('/login'); }
+        return res.redirect('/');
+    });
+
 });
 
 module.exports = router;

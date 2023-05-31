@@ -41,21 +41,17 @@
                         <button><i class="fas fa-search"></i></button>
                     </form>
                 </div>
+                <h3 class="skills-text">Навыки</h3>
                 <div class="sidebar-block skills">
-                    <h3 class="skills-text">Навыки</h3>
-                    <div class="skills-list">
-                        <ul>
-                            <li><input type="checkbox" id="skill1" value="skill1" checked><label for="skill1">Skill 1</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill2" value="skill2"><label for="skill2">Skill 2</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill3" value="skill3"><label for="skill3">Skill 3</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill4" value="skill4"><label for="skill4">Skill 4</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill5" value="skill5"><label for="skill5">Skill 5</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill6" value="skill6"><label for="skill6">Skill 6</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill7" value="skill7"><label for="skill7">Skill 7</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill8" value="skill8"><label for="skill8">Skill 8</label> <span class="count">(3)</span></li>
-                            <li><input type="checkbox" id="skill9" value="skill9"><label for="skill9">Skill 9</label> <span class="count">(3)</span></li>
-
-                        </ul>
+                    <div class="skills-list" id="skills-list">
+                        <script id="templateSkills" type="text/x-handlebars-template">
+                            <ul>
+                                {{#each skills}}
+                                    <li><input type="checkbox" id="{"{name}} value="{{name}}"><label for="{{name}}">{{name}}</label> <span class="count">(3)</span></li>
+                                {{/each}}
+                            </ul>
+                        </script>
+                        <script src="./scripts/getSkills.js"></script>
                     </div>
                 </div>
                 <div class="sidebar-block apply">
@@ -64,10 +60,10 @@
             </aside>
 
 
-    <div id="projects" class="projects">
+    <div id="ideas" class="ideas">
         <script id="template" type="text/x-handlebars-template">
             <ul>
-                {{#each projects}}
+                {{#each ideas}}
                     <div class="idea">
                         <div class="full-idea-description">
                             <h3 class="idea-name">{{name}}</h3>

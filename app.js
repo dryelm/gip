@@ -6,7 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const app = express();
 const session = require('express-session');
 const crypto = require('crypto');
-const path = require("path");
+
 
 const { comparePasswords } = require("./hashing");
 
@@ -17,10 +17,12 @@ const ideasRoutes = require('./routes/ideas');
 const loginRoutes = require('./routes/login');
 const registerRoutes = require('./routes/register');
 const profileRoutes = require('./routes/profile');
+const ideasAPI = require('./routes/api/ideasAPI');
+const profileAPI = require('./routes/api/profileAPI');
+const skillsAPI = require('./routes/api/skillsAPI');
+const path = require("path");
 const projectsRoutes = require('./routes/projects')
 
-const ideasAPI = require('./routes/api/ideasAPI')
-const profileAPI = require('./routes/api/profileAPI')
 
 
 const secret = crypto.randomBytes(64).toString('hex');
@@ -30,6 +32,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -59,7 +62,7 @@ const DB_URI = process.env.DB_URI || 'mongodb://127.0.0.1:27017/gipdb';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.set('view engine', 'ejs');
 mongoose.connect(DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -76,7 +79,7 @@ app.use('/register', registerRoutes);
 app.use('/profile', profileRoutes);
 app.use('/api/ideas', ideasAPI);
 app.use('/api/profile', profileAPI);
-
+app.use('/api/skills', skillsAPI);
 app.set('views', './views')
 
 app.use((err, req, res, next) => {

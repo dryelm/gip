@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#profile h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#profile p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.info-label {
+    font-weight: bold;
+    display: inline-block;
+    width: 150px;
+}
