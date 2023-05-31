@@ -7,18 +7,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <link rel="stylesheet" href="/personalAccount.css">
 </head>
+<header>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="...">
+    <label class="logo">GIP</label>
+    <div class="nav">
+        <ul>
+            <li><a href="/ideas" >Идеи</a></li>
+            <li><a href="/projects">Проекты</a></li>
+            <li><a href="#" class="active">Личный кабинет</a></li>
+        </ul>
+    </div>
+</header>
 <body>
     <div id="profile">
         <script id="template" type="text/x-handlebars-template">
-            <h2>{{username}}</h2>
-            <div><span class="info-label">Email:</span> <span>{{email}}</span></div>
-            <div><span class="info-label">Telegram:</span> <span>{{telegram}}</span></div>
-            <div><span class="info-label">About:</span> <span>{{about}}</span></div>
-            <div><span class="info-label">Skills:</span> <span>{{skills}}</span></div>
-            <div><span class="info-label">Finished Projects:</span> <span>{{finishedProjects}}</span></div>
-            <div><span class="info-label">Current Projects:</span> <span>{{currentProjects}}</span></div>
+<!--            <h2>{{username}}</h2>-->
+<!--            <div><span class="info-label">Email:</span> <span>{{email}}</span></div>-->
+<!--            <div><span class="info-label">Telegram:</span> <span>{{telegram}}</span></div>-->
+<!--            <div><span class="info-label">About:</span> <span>{{about}}</span></div>-->
+<!--            <div><span class="info-label">Skills:</span> <span>{{skills}}</span></div>-->
+<!--            <div><span class="info-label">Finished Projects:</span> <span>{{finishedProjects}}</span></div>-->
+<!--            <div><span class="info-label">Current Projects:</span> <span>{{currentProjects}}</span></div>-->
+            <div class="data-field">
+                <label>Имя пользователя</label>
+                <h2>{{username}}</h2>
+            </div>
+            <div class="data-field">
+                <label>Емэйл</label>
+                <p>{{email}}</p>
+            </div>
+            <div class="data-field">
+                <label>Телеграмм</label>
+                <p>{{telegram}}</p>
+            </div>
+            <div class="data-field">
+                <label>О себе</label>
+                <p>{{about}}</p>
+            </div>
+            <div class="data-field">
+                <label>Навыки</label>
+                <p>{{skills}}</p>
+            </div>
+            <div class="data-field">
+                <label>Прошлые проекты</label>
+                <p>{{finishedProjects}}</p>
+            </div>
+            <div class="data-field">
+                <label>Текущие</label>
+                <p>{{currentProjects}}</p>
+            </div>
         </script>
-
         <script src="/scripts/profile.js"></script>
     </div>
 </body>
