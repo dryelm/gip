@@ -10,7 +10,18 @@ const ideasSchema = new mongoose.Schema({
     },
     skills: {
         type: [String]
-    }
+    },
+
+    public: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+
+    creator: {
+        type: String,
+        required: true
+    },
 });
 
 module.exports = mongoose.model('Idea', ideasSchema);

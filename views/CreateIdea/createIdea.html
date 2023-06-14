@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Suggest Idea</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</head>
+<body>
+    <form action="/ideas/create" method="POST">
+        <form action="/create" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description"><br><br>
+            <label for="skills-list">Skills:</label>
+                <div class="skills-list" id="skills-list">
+                    <script id="templateSkills" type="text/x-handlebars-template">
+                        <ul>
+                            {{#each skills}}
+                                <li><input type="checkbox" id="{{name}}" value="{{name}}" name="skills"><label for="{{name}}">{{name}}</label></li>
+                            {{/each}}
+                        </ul>
+                    </script>
+                    <script src="/scripts/getSkills.js"></script>
+                </div>
+            <input type="submit" value="Submit">
+        </form>
+    </form>
+
+</body>
+</html>
