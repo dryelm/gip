@@ -190,6 +190,7 @@ header {
     border: 1px solid gray;
     border-radius: 5px;
     overflow-y: scroll;
+    list-style-type: none;
 }
 
 .skills h3 {
@@ -260,6 +261,7 @@ header {
     margin-top: 0.5%;
     position: absolute;
     left: 60%;
+    list-style-type: none;
 }
 
 .idea-buttons button {

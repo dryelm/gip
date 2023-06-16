@@ -37,28 +37,28 @@
                 </div>
                 <div class="sidebar-block search-bar">
                     <form>
-                        <input type="text" placeholder="Поиск навыков">
-                        <button><i class="fas fa-search"></i></button>
+                        <input type="search" placeholder="Поиск навыков">
                     </form>
                 </div>
+
                 <h3 class="skills-text">Навыки</h3>
                 <div class="sidebar-block skills">
                     <div class="skills-list" id="skills-list">
                         <script id="templateSkills" type="text/x-handlebars-template">
                             <ul>
                                 {{#each skills}}
-                                    <li><input type="checkbox" id="{"{{name}} value="{{name}}"><label for="{{name}}">{{name}}</label> <span class="count">(3)</span></li>
+                                    <li><input type="checkbox" id="{{name}}" value="{{name}}"><label for="{{name}}">{{name}}</label> <span class="count">(3)</span></li>
                                 {{/each}}
                             </ul>
                         </script>
-                        <script src="./scripts/getSkills.js"></script>
+                        <script src="/scripts/getSkills.js"></script>
                     </div>
                 </div>
                 <div class="sidebar-block apply">
                     <button>Применить</button>
                 </div>
             </aside>
-
+    <script src="/scripts/searchSkills.js"></script>
 
     <div id="ideas" class="ideas">
         <script id="template" type="text/x-handlebars-template">
@@ -82,7 +82,7 @@
                 {{/each}}
             </ul>
         </script>
-        <script src="./scripts/ideas.js"></script>
+        <script src="/scripts/ideas.js"></script>
     </div>
 
 
