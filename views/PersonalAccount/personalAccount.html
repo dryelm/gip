@@ -70,7 +70,10 @@
         <div class="right-section">
             <div class="data-field">
                 <label>Навыки</label>
-                <p>{{skills}}</p>
+                {{#each skills}}
+                    <p>{{this}}</p>
+                {{/each}}
+
             </div>
         </div>
         <div class="bottom-section">

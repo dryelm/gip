@@ -1,0 +1,9 @@
+#selected-skills, #unselected-skills {
+    display: flex;
+    flex-wrap: wrap;
+}
+.skill {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+}

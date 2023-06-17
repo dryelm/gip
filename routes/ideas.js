@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const Project = require('../models/IdeasDB');
 const path = require("path");
-const Skills = require("../models/SkiilsDB");
+const Skills = require("../models/SkillsDB");
 const Ideas = require("../models/IdeasDB");
 
 // Получение списка проектов

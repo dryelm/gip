@@ -22,7 +22,7 @@ const profileAPI = require('./routes/api/profileAPI');
 const skillsAPI = require('./routes/api/skillsAPI');
 const path = require("path");
 const projectsRoutes = require('./routes/projects')
-
+const usernameAPI = require('./routes/api/usernameAPI');
 
 
 const secret = crypto.randomBytes(64).toString('hex');
@@ -80,6 +80,8 @@ app.use('/profile', profileRoutes);
 app.use('/api/ideas', ideasAPI);
 app.use('/api/profile', profileAPI);
 app.use('/api/skills', skillsAPI);
+app.use('/api/username', usernameAPI);
+
 app.set('views', './views')
 
 app.use((err, req, res, next) => {

@@ -1,11 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const SkillsDB = require('../../models/SkiilsDB');
-
+const SkillsDB = require('../../models/SkillsDB');
 
 router.get("/", async (req, res) => {
-    const skills = await SkillsDB.find();
-    await res.json(skills);
+    await SkillsDB.aggregate([
+        {
+            $lookup: {
+                from: 'ideas',
+                let: { skillName: '$name' },
+                pipeline: [
+                    { $unwind: '$skills' },
+                    { $match: { $expr: { $eq: ['$skills', '$$skillName'] } } },
+                    { $group: { _id: '$skills', count: { $sum: 1 } } }
+                ],
+                as: 'count'
+            }
+        },
+        {
+            $addFields: {
+                count: { $ifNull: [{ $arrayElemAt: ['$count.count', 0] }, 0] }
+            }
+        }
+    ]).then(skills => res.json(skills));
 });
 
 

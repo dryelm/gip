@@ -1,9 +1,8 @@
-// Получаем элементы формы и списка результатов
 const searchForm = document.querySelector('.search-bar form');
 const searchInput = document.querySelector('.search-bar input');
 const skillsList = document.querySelector('#skills-list');
 const applyButton = document.querySelector('.apply button');
-// Функция для фильтрации и отображения результатов
+
 function searchSkills(event) {
     event.preventDefault();
     const searchTerm = searchInput.value.toLowerCase();
@@ -17,7 +16,8 @@ function searchSkills(event) {
     });
 }
 
-function applySkills() {
+function applySkills(event) {
+    event.preventDefault();
     const checkedSkills = Array.from(skillsList.querySelectorAll('input:checked'));
     const ideas = document.querySelectorAll('.idea');
     ideas.forEach(idea => {
@@ -32,6 +32,6 @@ function applySkills() {
     });
 
 }
-// Добавляем обработчик событий для формы
+
 searchForm.addEventListener("input", searchSkills);
 applyButton.addEventListener("click", applySkills);

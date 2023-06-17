@@ -219,10 +219,12 @@ header {
 .skills-list {
  /* Add scrollable content */
     margin-right: 20px;
+    display: list-item;
 }
 
 .skills label {
     margin-left: 10px;
+
 }
 
 .count {
