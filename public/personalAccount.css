@@ -1,5 +1,3 @@
-/* personalAccount.css */
-
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -14,8 +12,9 @@ body {
     max-width: 1200px;
     margin: 30px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 h2 {
@@ -34,7 +33,6 @@ header {
     padding: 20px 50px;
     z-index: 2;
 }
-
 
 .logo {
     font-family: 'Montserrat', sans-serif;
@@ -80,7 +78,6 @@ header {
     opacity: 1;
 }
 
-/* Общие стили для полей данных */
 .data-field {
     border: 1px solid #ccc;
     padding: 10px;
@@ -88,27 +85,19 @@ header {
     display: inline-block;
     width: calc(100% - 22px);
     box-sizing: border-box;
+    border-radius: 10px; /* Rounded edges */
 }
 
-/* Стили для заголовков полей данных */
 .data-field h2,
 .data-field p {
     margin: 0;
     padding: 0;
 }
 
-/* Стили для меток полей данных */
 .data-field label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 #profile {
@@ -132,3 +121,27 @@ body {
     display: inline-block;
     width: 150px;
 }
+
+#profile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.left-section {
+    flex: 1 0 60%;
+    margin-right: 10px;
+}
+
+.right-section {
+    flex: 1 0 30%;
+    margin-left: 10px;
+}
+
+.bottom-section {
+    flex: 1 0 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
