@@ -7,33 +7,6 @@
     <title>Profile</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <link rel="stylesheet" href="/personalAccount.css">
-    <style>
-        /* CSS code goes here */
-        .data-field {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .data-field.skills {
-            float: right;
-            width: 40%;
-        }
-
-        .data-field.about {
-            width: 100%;
-        }
-
-        .data-field.projects {
-            width: 50%;
-            display: inline-block;
-            box-sizing: border-box;
-            vertical-align: top;
-        }
-    </style>
 </head>
 <body>
 <header>
@@ -70,11 +43,12 @@
         <div class="right-section">
             <div class="data-field">
                 <label>Навыки</label>
+                <a href="/profile/edit/skills" class="edit-button">Изменить</a>
                 {{#each skills}}
                     <p>{{this}}</p>
                 {{/each}}
-
             </div>
+
         </div>
         <div class="bottom-section">
             <div class="data-field">

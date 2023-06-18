@@ -1,9 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+#search {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
 #selected-skills, #unselected-skills {
     display: flex;
     flex-wrap: wrap;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    justify-content: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /*!* Add a black border *!*/
+    /*border-width: 3px; !* Change the border width *!*/
+    /*border-style: solid; !* Change the border style *!*/
+    /*border-color: #ddd; !* Change the border color *!*/
 }
-.skill {
+
+#selected-skills > div, #unselected-skills > div {
     margin: 5px;
     padding: 5px;
-    border: 1px solid black;
+    border-width: 3px; /* Change the border width */
+    border-style: solid; /* Change the border style */
+    border-color: #ddd; /* Change the border color */
+    border-radius: 10px;
+    background-color:white
+}
+
+#selected-skills > div:hover, #unselected-skills > div:hover {
+    background-color:#f1f1f1
+}
+
+#apply {
+    margin-top: 20px;
+    text-align:center
+}
+
+#apply button {
+    padding: 15px 30px;
+    background-color:#007bff;
+    color:white;
+    border:none;
+    border-radius: 5px
+}
+
+#apply button:hover {
+    background-color:#0056b3
 }
