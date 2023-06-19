@@ -1,0 +1,28 @@
+[
+{
+  "name": "My Awesome Idea",
+  "idea": "",
+  "owner": "f",
+  "description": "A revolutionary idea that will change the world!",
+  "skills": ["CSS", "HTML", "JavaScript"],
+  "members": ["fuck", "chlen"]
+},
+
+{
+  "name": "My Next Big Thing",
+  "idea": "",
+  "owner": "f",
+  "description": "An innovative idea that solves a real problem!",
+  "skills": ["Swift"],
+  "members": ["ssss"]
+},
+
+{
+  "name": "The Future of Technology",
+  "idea": "",
+  "owner": "f",
+  "description": "A futuristic idea that will shape the way we live!",
+  "skills": ["ML Kit", "Python"],
+  "members": []
+}
+]

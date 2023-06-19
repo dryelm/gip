@@ -9,7 +9,7 @@ function searchSkills(event) {
     const skills = skillsList.querySelectorAll('li');
     skills.forEach(skill => {
         if (skill.textContent.toLowerCase().includes(searchTerm)) {
-            skill.style.display = 'list-item';
+            skill.style.display = '';
         } else {
             skill.style.display = 'none';
         }
@@ -24,7 +24,7 @@ function applySkills(event) {
         const ideaSkills = Array.from(idea.querySelectorAll('.skill'))
             .map(skill => skill.textContent);
         if (checkedSkills.every(skill => ideaSkills.includes(skill.value))) {
-            idea.style.display = 'flex';
+            idea.style.display = '';
         }
         else {
             idea.style.display = 'none';
