@@ -21,7 +21,7 @@ const ideasAPI = require('./routes/api/ideasAPI');
 const profileAPI = require('./routes/api/profileAPI');
 const skillsAPI = require('./routes/api/skillsAPI');
 const path = require("path");
-const projectsRoutes = require('./routes/projects')
+const teamsRoutes = require('./routes/teams')
 const usernameAPI = require('./routes/api/usernameAPI');
 
 
@@ -74,7 +74,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
 app.use('/ideas', ideasRoutes);
-app.use('/projects', projectsRoutes)
+app.use('/teams', teamsRoutes)
 app.use('/register', registerRoutes);
 app.use('/profile', profileRoutes);
 app.use('/api/ideas', ideasAPI);

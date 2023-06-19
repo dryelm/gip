@@ -6,7 +6,7 @@ const Teams = require('../models/TeamsDB');
 router.get('/', async (req, res) => {
     //const teams = await Teams.find();
     // TODO: как вывести имена людей в команде?
-    await res.sendFile(path.join(`${__dirname}`, '..', 'views', 'ProjectSearch', 'projectSearch.html'));
+    await res.sendFile(path.join(`${__dirname}`, '..', 'views', 'TeamSearch', 'teamSearch.html'));
 });
 
 module.exports = router;
