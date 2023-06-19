@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
@@ -72,6 +72,10 @@ a {
 
 a:hover {
     color: #0056b3;
+}
+
+.message {
+    text-align: center;
 }
 
 .message{
