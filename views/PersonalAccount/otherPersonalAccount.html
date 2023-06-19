@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <link rel="stylesheet" href="/personalAccount.css">
+</head>
+<body>
+<header>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="...">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <label class="logo">GIP</label>
+    <div class="nav">
+        <ul>
+            <li><a href="/ideas" >Идеи</a></li>
+            <li><a href="/projects">Проекты</a></li>
+            <li><a href="#" class="active">Личный кабинет</a></li>
+        </ul>
+    </div>
+</header>
+<div id="profile">
+    <script id="template" type="text/x-handlebars-template">
+        <div class="left-section">
+            <div class="data-field">
+                <label>Имя пользователя</label>
+                <h2>{{username}}</h2>
+            </div>
+            <div class="data-field">
+                <label>Емэйл</label>
+                <p>{{email}}</p>
+            </div>
+            <div class="data-field">
+                <label>Телеграмм</label>
+                <p>{{telegram}}</p>
+            </div>
+            <div class="data-field">
+                <label>О себе</label>
+                <p>{{about}}</p>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="data-field">
+                <label>Навыки</label>
+                {{#each skills}}
+                    <p>{{this}}</p>
+                {{/each}}
+            </div>
+
+        </div>
+        <div class="bottom-section">
+            <div class="data-field">
+                <label>Прошлые проекты</label>
+                <p>{{finishedProjects}}</p>
+            </div>
+            <div class="data-field">
+                <label>Текущие</label>
+                <p>{{currentProjects}}</p>
+            </div>
+        </div>
+    </script>
+    <script src="/scripts/profile.js"></script>
+</div>
+</body>
+</html>
