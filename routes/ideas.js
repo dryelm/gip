@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 const Project = require('../models/IdeasDB');
 const path = require("path");
 const Skills = require("../models/SkillsDB");
