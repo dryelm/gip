@@ -14,7 +14,7 @@ const ideasSchema = new mongoose.Schema({
 
     public: {
         type: Boolean,
-        default: false,
+        default: true,
         required: true
     },
 
