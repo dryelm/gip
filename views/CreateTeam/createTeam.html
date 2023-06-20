@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Создать команду</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 </head>
 <body>
+<div id="create-team-form">
+    <script id="template" type="text/x-handlebars-template">
+        <form action="/teams/create" method="POST">
+            <input type="hidden" name="ideas_id" value="{{ideas_id}}">
+            <label for="description">Описание:</label>
+            <textarea id="description" name="description"></textarea> <br>
+            <label for="maxMembers">Количество человек в команде:</label>
+            <input type="number" id="maxMembers" name="maxMembers" min="2" max="10">
+            <input type="submit" value="Submit">
+        </form>
+    </script>
+</div>
+<script>
+    const form = document.getElementById('template').innerHTML;
+    const template = Handlebars.compile(form);
+    const ideas_id = new URLSearchParams(window.location.search).get('ideas_id');
+    document.getElementById('create-team-form').innerHTML = template({ideas_id: ideas_id})
+</script>
 
 </body>
 </html>

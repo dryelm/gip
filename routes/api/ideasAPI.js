@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    const project = await Ideas.find((project) => project.id === id && project.public === true, {public: 0});
+    const project = await Ideas.findOne((project) => project._id === id && project.public === true, {public: 0});
     await res.json(project);
 });
 

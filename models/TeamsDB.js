@@ -5,23 +5,33 @@ const teamsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
     idea: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "ideas",
         required: true
     },
+
     owner: {
         type: String,
         required: true
     },
+
     description: {
         type: String
     },
+
     skills: {
         type: [String]
     },
+
     members: {
         type: [String]
     },
+    maxCountMembers:{
+        type: Number
+    }
+
 });
 
 module.exports = mongoose.model('Team', teamsSchema);
