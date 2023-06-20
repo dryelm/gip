@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Ideas = require('../../models/IdeasDB');
-const path = require("path");
 
 router.get('/', async (req, res) => {
     const ideas = await Ideas.find({public : true}, {public: 0});

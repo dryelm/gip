@@ -18,6 +18,7 @@ const loginRoutes = require('./routes/login');
 const registerRoutes = require('./routes/register');
 const profileRoutes = require('./routes/profile');
 const ideasAPI = require('./routes/api/ideasAPI');
+const teamsAPI = require('./routes/api/teamsAPI');
 const profileAPI = require('./routes/api/profileAPI');
 const skillsAPI = require('./routes/api/skillsAPI');
 const path = require("path");
@@ -78,6 +79,7 @@ app.use('/teams', teamsRoutes)
 app.use('/register', registerRoutes);
 app.use('/profile', profileRoutes);
 app.use('/api/ideas', ideasAPI);
+app.use('/api/teams', teamsAPI);
 app.use('/api/profile', profileAPI);
 app.use('/api/skills', skillsAPI);
 app.use('/api/username', usernameAPI);
