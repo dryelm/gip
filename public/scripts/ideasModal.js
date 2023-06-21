@@ -20,10 +20,9 @@ function initIdeasModal() {
             form.querySelector('input[name="ideas_id"]').value = ideasId;
 
             // Get the idea name from the button's parent element
-            const ideaName = button.closest('.idea').querySelector('.idea-name').textContent;
-
             // Update the modal's h3 text with the idea name
-            modal.querySelector('h3').textContent = ideaName;
+            modal.querySelector('h3').textContent =
+                button.closest('.idea').querySelector('.idea-name').textContent;
 
             // Открываем модальное окно
             modal.style.display = "block";
