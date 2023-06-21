@@ -28,6 +28,7 @@ header {
     color: #252B42;
     height: 50px;
     margin-right: 5%;
+    margin-left: 5%;
 }
 
 .nav {
@@ -46,7 +47,8 @@ header {
 .nav ul {
     display: flex;
     align-items: center;
-    margin: 0 0 0 20%;
+    margin-right: 5%;
+    margin-left: 20%;
     padding: 0;
 }
 
