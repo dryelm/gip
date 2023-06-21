@@ -4,6 +4,7 @@
   "description": "Platform for sharing project ideas and improving skills",
   "main": "app.js",
   "scripts": {
+    "install": "npm install",
     "start": "node app.js"
   },
   "dependencies": {
@@ -12,8 +13,8 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.9",
     "express": "^4.17.1",
+    "express-handlebars": "^7.0.7",
     "express-session": "^1.17.3",
-    "handlebars": "^4.7.7",
     "hbs": "^4.2.0",
     "mongoose": "^7.1.0",
     "passport": "^0.6.0",
