@@ -304,9 +304,8 @@ header {
     top: 10%;
 }
 
-/* Модальное окно */
 .modal {
-    display: none;
+    display: none; /* Hide the modal by default */
     position: fixed;
     z-index: 100;
     left: 0;
@@ -314,20 +313,20 @@ header {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black background */
 }
 
-
-/* Стили для содержимого модального окна */
 .modal-content {
-
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 15% auto; /* Center the modal vertically and horizontally */
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    max-width: 500px;
+    border-radius: 10px; /* Add this line to make the corners rounded */
+    position: relative;
 }
-/* Стили для кнопки закрытия */
+
 .close {
     color: #aaa;
     float: right;
@@ -341,6 +340,53 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
+
+h3 {
+    margin-top: 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+textarea,
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 4%;
+    margin-right: 4%;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+input[type="number"] {
+    width: 60px;
+}
+
 
 @media (max-width: 767px) {
     .sidebar {
@@ -412,5 +458,11 @@ header {
         font-size: 12px;
     }
 }
+
+
+
+
+
+
 
 
