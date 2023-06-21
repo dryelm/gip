@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    <link rel="stylesheet" href="/personalAccount.css">
+    <link rel="stylesheet" href="/editProfile.css">
 </head>
 <body>
 <header>
@@ -25,44 +25,24 @@
     <script id="template" type="text/x-handlebars-template">
         <div class="left-section">
             <div class="data-field">
-                <a href="/profile/edit" class="edit-button">Изменить</a>
                 <label>Имя пользователя</label>
-                <h2>{{username}}</h2>
+                <input type="text" value="{{username}}" id="username">
             </div>
             <div class="data-field">
-                <a href="/profile/edit" class="edit-button">Изменить</a>
                 <label>Емэйл</label>
-                <p>{{email}}</p>
+                <input type="email" value="{{email}}" id="email">
             </div>
             <div class="data-field">
-                <a href="/profile/edit" class="edit-button">Изменить</a>
                 <label>Телеграмм</label>
-                <p>{{telegram}}</p>
+                <input type="text" value="{{telegram}}" id="telegram">
             </div>
             <div class="data-field">
-                <a href="/profile/edit" class="edit-button">Изменить</a>
                 <label>О себе</label>
-                <p>{{about}}</p>
-            </div>
-        </div>
-        <div class="right-section">
-            <div class="data-field">
-                <label>Навыки</label>
-                <a href="/profile/edit/skills" class="edit-button">Изменить</a>
-                {{#each skills}}
-                    <p>{{this}}</p>
-                {{/each}}
-            </div>
-
-        </div>
-        <div class="bottom-section">
-            <div class="data-field">
-                <label>Прошлые проекты</label>
-                <p>{{finishedProjects}}</p>
+                <textarea id="about">{{about}}</textarea>
             </div>
             <div class="data-field">
-                <label>Текущие</label>
-                <p>{{currentProjects}}</p>
+                <button id="cancel">Cancel</button>
+                <button id="save">Save</button>
             </div>
         </div>
     </script>
