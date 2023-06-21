@@ -27,13 +27,26 @@ header {
     font-size: 50px;
     color: #252B42;
     height: 50px;
-    margin-right: 50px;
+    margin-right: 5%;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+    background-color: #ffffff;
+    width: 100%;
+    height: 9%;
+    left: 0;
 }
 
 .nav ul {
     display: flex;
     align-items: center;
-    margin: 0;
+    margin: 0 0 0 20%;
     padding: 0;
 }
 
@@ -70,6 +83,7 @@ header {
     align-items: center;
     justify-content: flex-end;
     position: relative; /* added position */
+    margin-left: 14%;
 }
 
 .search input[type="text"] {
