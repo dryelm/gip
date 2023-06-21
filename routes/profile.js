@@ -27,6 +27,10 @@ router.get('/user/:username', async function (req, res) {
     // res.render('PersonalAccount/personalAccount', {user: user});
 });
 
+router.get('/edit', async function (req, res) {
+    res.sendFile(path.join(`${__dirname}`, '..', 'views', 'editProfile', 'editProfile.html'));
+});
+
 router.get('/edit/skills', async function (req, res) {
      if (!req.isAuthenticated()){
          res.redirect('/login');
