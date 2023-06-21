@@ -6,7 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const app = express();
 const session = require('express-session');
 const crypto = require('crypto');
-
+const hbs = require('handlebars');
 
 const { comparePasswords } = require("./hashing");
 
@@ -33,7 +33,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-app.set("view engine", "hbs");
+app.set("view engine", hbs);
 
 app.use(passport.initialize());
 app.use(passport.session());
