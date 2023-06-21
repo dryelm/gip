@@ -279,10 +279,12 @@ header {
 
 .idea-buttons .create {
     background-color: #40BB15;
+    cursor: pointer;
 }
 
 .idea-buttons .find {
     background-color: #23A6F0;
+    cursor: pointer;
 }
 
 .ideas {
