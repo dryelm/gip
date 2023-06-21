@@ -27,8 +27,6 @@ header {
     font-size: 50px;
     color: #252B42;
     height: 50px;
-    margin-right: 5%;
-    margin-left: 5%;
 }
 
 .nav {
@@ -48,8 +46,6 @@ header {
     display: flex;
     align-items: center;
     padding: 0;
-    margin-right: 5%;
-    margin-left: 20%;
 }
 
 .nav li {
@@ -85,7 +81,6 @@ header {
     align-items: center;
     justify-content: flex-end;
     position: relative; /* added position */
-    margin-left: 14%;
 }
 
 .search input[type="text"] {
