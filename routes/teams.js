@@ -3,12 +3,33 @@ const path = require("path");
 const router = express.Router();
 const Teams = require('../models/TeamsDB');
 const Ideas = require("../models/IdeasDB");
+const SkillsDB = require("../models/SkillsDB");
 
 router.get('/', async (req, res) => {
     try {
-        res.sendFile(path.join(`${__dirname}`, '..', 'views', 'TeamSearch', 'teamSearch.html'));
+        const teams = await Teams.find()
+        const skills = await SkillsDB.aggregate([
+            {
+                $lookup: {
+                    from: 'teams',
+                    let: { skillName: '$name' },
+                    pipeline: [
+                        { $unwind: '$skills' },
+                        { $match: { $expr: { $eq: ['$skills', '$$skillName'] } } },
+                        { $group: { _id: '$skills', count: { $sum: 1 } } }
+                    ],
+                    as: 'count'
+                }
+            },
+            {
+                $addFields: {
+                    count: { $ifNull: [{ $arrayElemAt: ['$count.count', 0] }, 0] }
+                }
+            }
+        ])
+        res.render('TeamSearch/teamSearch.hbs', {"skills-search": skills.filter(elem => elem["count"] !== 0), "teams": teams});
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: "Server Error" });
     }
 });
 

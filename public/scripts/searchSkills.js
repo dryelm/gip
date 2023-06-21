@@ -35,3 +35,4 @@ function applySkills(event) {
 
 searchForm.addEventListener("input", searchSkills);
 applyButton.addEventListener("click", applySkills);
+console.log("Hello from searchSkills.js");

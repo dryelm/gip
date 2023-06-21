@@ -33,6 +33,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+app.set("view engine", "hbs");
 
 app.use(passport.initialize());
 app.use(passport.session());

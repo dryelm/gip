@@ -16,13 +16,17 @@ router.get('/user/:username', async function (req, res) {
     const username = req.params.username;
 
     const user = await User.findOne({username: username}, {password: 0});
+
     if (!user) {
-        res.status(404).send('User not found');
+        await res.status(404).send('User not found');
         return;
     }
-    if (req.isAuthenticated() && req.session.passport.user.username === username)
-        {res.sendFile(path.join(`${__dirname}`, '..', 'views', 'PersonalAccount', 'myPersonalAccount.html'));}
-    else {res.sendFile(path.join(`${__dirname}`, '..', 'views', 'PersonalAccount', 'otherPersonalAccount.html'));}
+    if (req.isAuthenticated() && req.session.passport.user.username === username) {
+        await res.render("PersonalAccount/myPersonalAccount.hbs", user);
+    }
+    else {
+        await res.render('PersonalAccount/otherPersonalAccount.hbs', user);
+    }
 
     // res.render('PersonalAccount/personalAccount', {user: user});
 });

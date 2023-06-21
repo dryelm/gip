@@ -4,11 +4,33 @@ const Project = require('../models/IdeasDB');
 const path = require("path");
 const Skills = require("../models/SkillsDB");
 const Ideas = require("../models/IdeasDB");
+const SkillsDB = require("../models/SkillsDB");
 
 // Получение списка проектов
 router.get('/', async (req, res) => {
     try {
-        res.sendFile(path.join(`${__dirname}`, '..', 'views', 'IdeaSearch', 'ideaSearch.html'));
+        const ideas = await Ideas.find({public : true}, {public: 0});
+        const skills = await SkillsDB.aggregate([
+            {
+                $lookup: {
+                    from: 'ideas',
+                    let: { skillName: '$name' },
+                    pipeline: [
+                        { $unwind: '$skills' },
+                        { $match: { $expr: { $eq: ['$skills', '$$skillName'] } } },
+                        { $group: { _id: '$skills', count: { $sum: 1 } } }
+                    ],
+                    as: 'count'
+                }
+            },
+            {
+                $addFields: {
+                    count: { $ifNull: [{ $arrayElemAt: ['$count.count', 0] }, 0] }
+                }
+            }
+        ]);
+
+        await res.render("IdeaSearch/ideaSearch.hbs", {"ideas":ideas, "skills-search":skills});
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -16,7 +38,7 @@ router.get('/', async (req, res) => {
 
 // Создание нового проекта
 router.post('/', async (req, res) => {
-    const project = new Project({
+    const project = new Ideas({
         name: req.body.name,
         description: req.body.description,
         skills: req.body.skills
@@ -35,8 +57,27 @@ router.get("/create", async (req, res) => {
         await res.status(401).json({message: "Unauthorized"});
         return;
     }
+    const skills = await SkillsDB.aggregate([
+        {
+            $lookup: {
+                from: 'ideas',
+                let: { skillName: '$name' },
+                pipeline: [
+                    { $unwind: '$skills' },
+                    { $match: { $expr: { $eq: ['$skills', '$$skillName'] } } },
+                    { $group: { _id: '$skills', count: { $sum: 1 } } }
+                ],
+                as: 'count'
+            }
+        },
+        {
+            $addFields: {
+                count: { $ifNull: [{ $arrayElemAt: ['$count.count', 0] }, 0] }
+            }
+        }
+    ]);
 
-    await res.sendFile(path.join(`${__dirname}`, '..', 'views', 'CreateIdea', 'createIdea.html'));
+    await res.render('CreateIdea/createIdea.hbs', {skills});
 });
 
 router.post('/create', async (req, res) =>
