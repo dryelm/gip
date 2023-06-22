@@ -61,11 +61,14 @@ h2 {
 }
 
 #apply button {
-    padding: 15px 30px;
-    background-color:#007bff;
+    padding: 10px 20px;
+    background-color: #003cff;
     color:white;
     border:none;
-    border-radius: 5px
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 25px;
 }
 
 #apply button:hover {
