@@ -33,6 +33,30 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:ideasId', async (req, res) => {
+    try {
+        // Get the ideasId from the request parameters
+        const ideasId = req.params.ideasId;
+
+        // Find all teams with the specified idea
+        const teams = await Teams.find({ idea: ideasId });
+
+        // Check if there are any teams
+        if (teams.length === 0) {
+            // If there are no teams, render a message saying that there are no teams
+            res.render('noTeams.hbs');
+            return;
+        } else {
+            // If there are teams, render the list of teams using Handlebars
+            res.render('teamsList.hbs', { teams });
+        }
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
+
+
 router.get("/create", async (req, res) => {
     if (!req.isAuthenticated()){
         await res.redirect('/login');
