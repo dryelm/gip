@@ -259,8 +259,6 @@ header {
     margin-bottom: 1%;
     width: 95%;
     padding: 1%;
-    display: flex;
-    flex-direction: row;
 }
 
 .idea-name {
@@ -268,13 +266,15 @@ header {
 }
 
 .idea-description {
-    width: 70%;
+    width: auto;
 }
 
 .idea-skills {
     margin-top: 0.5%;
-    position: absolute;
-    left: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     list-style-type: none;
 }
 

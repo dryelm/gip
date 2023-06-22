@@ -60,21 +60,23 @@
     <div id="ideas" class="ideas">
         <ul>
             {{#each ideas}}
-                <div class="idea">
-                    <div class="full-idea-description">
+                <table class="idea">
+                    <td class="full-idea-description" width="70%">
                         <h3 class="idea-name">{{name}}</h3>
                         <h5 class="idea-description">{{description}}</h5>
-                    </div>
-                    <ul class="idea-skills">
-                        {{#each skills}}
-                            <li class="skill">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    <div class="idea-buttons">
+                    </td>
+                    <td width="15%">
+                        <ul class="idea-skills">
+                            {{#each skills}}
+                                <li class="skill">{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                    <td class="idea-buttons" width="15%">
                         <button class="create" value="{{_id}}">Создать команду</button>
                         <button class="find">Найти команду</button>
-                    </div>
-                </div>
+                    </td>
+                </table>
             {{/each}}
         </ul>
     </div>

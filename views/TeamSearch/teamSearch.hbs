@@ -58,21 +58,23 @@
     <div id="teams" class="teams">
         <ul>
             {{#each teams}}
-                <div class="team">
-                    <div class="full-team-description">
+                <table class="team">
+                    <td class="full-team-description" width="70%">
                         <h3 class="team-name">{{name}}</h3>
                         <h5 class="team-description">{{description}}</h5>
-                    </div>
-                    <ul class="team-skills">
-                        {{#each skills}}
-                            <li class="skill">{{this}}</li>
-                        {{/each}}
-                    </ul>
-                    <div class="team-buttons">
+                    </td>
+                    <td width="15%">
+                        <ul class="team-skills">
+                            {{#each skills}}
+                                <li class="skill">{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                    <td class="team-buttons" width="15%">
                         <button class="create">Создать команду</button>
                         <button class="find">Найти команду</button>
-                    </div>
-                </div>
+                    </td>
+                </table>
             {{/each}}
         </ul>
     </div>

@@ -258,8 +258,6 @@ header {
     margin-bottom: 1%;
     width: 95%;
     padding: 1%;
-    display: flex;
-    flex-direction: row;
 }
 
 .team-name {
@@ -272,8 +270,6 @@ header {
 
 .team-skills {
     margin-top: 0.5%;
-    position: absolute;
-    left: 60%;
     list-style-type: none;
 }
 
@@ -290,15 +286,18 @@ header {
 
 .team-buttons .create {
     background-color: #40BB15;
+    cursor: pointer;
 }
 
 .team-buttons .find {
     background-color: #23A6F0;
+    cursor: pointer;
 }
 
 .teams {
     position: absolute;
     left: 19%;
+    top: 10%;
 }
 
 @media (max-width: 767px) {
