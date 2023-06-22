@@ -228,7 +228,6 @@ header {
 }
 
 .skills-list {
- /* Add scrollable content */
     margin-right: 20px;
     display: list-item;
 }
@@ -320,7 +319,6 @@ header {
 }
 
 
-/* Responsive Styling */
 @media screen and (max-width: 768px) {
     header {
         padding: 10px 20px;

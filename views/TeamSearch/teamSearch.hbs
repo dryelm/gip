@@ -25,6 +25,7 @@
             <ul>
                 <li><a href="/ideas" >Идеи</a></li>
                 <li><a href="/teams" class="active">Команды</a></li>
+                <li><a href="/myteams">Мои команды</a></li>
                 <li><a href="/profile">Личный кабинет</a></li>
             </ul>
         </div>
@@ -44,7 +45,15 @@
             <div class="skills-list" id="skills-list">
                 <ul>
                     {{#each skills-search}}
-                        <li><input type="checkbox" id="{{name}}" value="{{name}}"><label for="{{name}}">{{name}}</label> <span class="count">({{count}})</span></li>
+                        <li>
+                            <input type="checkbox" id="{{name}}" value="{{name}}">
+                            <label for="{{name}}">
+                                {{name}}
+                            </label>
+                            <span class="count">
+                                ({{count}})
+                            </span>
+                        </li>
                     {{/each}}
                 </ul>
             </div>
