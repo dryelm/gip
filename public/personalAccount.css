@@ -148,6 +148,16 @@ header {
 .edit-button {
     color: gray;
     float: right;
+    cursor: pointer;
+    background-color: transparent;
+    border-style: none;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.edit-link {
+    color: gray;
+    float: right;
 }
 
 .data-field label, .data-field a {
