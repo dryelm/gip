@@ -34,7 +34,7 @@ header {
     z-index: 2;
 }
 
-.logo {
+.logo.logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 50px;
