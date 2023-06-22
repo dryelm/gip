@@ -1,11 +1,4 @@
-const source = document.getElementById('template').innerHTML;
-const template = Handlebars.compile(source);
-const username = window.location.pathname.split('/').pop();
-fetch(`/api/profile/${username}`)
-    .then(r => r.json())
-    .then(data => {
-        document.getElementById('profile').innerHTML = template(data);
-        // функция для создания редактируемого поля
+ // функция для создания редактируемого поля
         function makeEditable(field) {
             // получаем текущее значение поля
             let value = field.querySelector('h2, p').textContent;
@@ -45,4 +38,3 @@ fetch(`/api/profile/${username}`)
                 makeEditable(field);
             });
         }
-    });
