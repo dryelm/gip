@@ -1,51 +1,81 @@
 function initIdeasModal() {
-    // Получаем элементы модального окна и кнопки закрытия
-    const modal = document.getElementById("modal");
-    const span = document.getElementsByClassName("close")[0];
+    // Get the create team modal element and the close button
+    const createModal = document.getElementById("modal");
+    const createSpan = document.getElementsByClassName("close")[0];
 
-    // Получаем все кнопки "Создать команду"
+    // Get all the "Create team" buttons
     const createButtons = document.querySelectorAll('.idea-buttons .create');
 
-    // Добавляем обработчик событий к каждой кнопке "Создать команду"
+    // Add an event listener to each "Create team" button
     createButtons.forEach((button) => {
         button.addEventListener('click', (event) => {
-            // Отменяем действие по умолчанию
+            // Prevent the default action
             event.preventDefault();
 
-            // Получаем значение ideas_id из атрибута value кнопки
+            // Get the ideasId from the value attribute of the button
             const ideasId = event.target.value;
 
-            // Обновляем форму в модальном окне
-            const form = modal.querySelector('form');
+            // Update the form in the create team modal window
+            const form = createModal.querySelector('form');
             form.querySelector('input[name="ideas_id"]').value = ideasId;
 
             // Get the idea name from the button's parent element
             const ideaName = button.closest('.idea').querySelector('.idea-name').textContent;
 
-            // Update the modal's h3 text with the idea name
-            modal.querySelector('h3').textContent = ideaName;
+            // Update the create team modal's h3 text with the idea name
+            createModal.querySelector('h3').textContent = ideaName;
 
-            // Открываем модальное окно
-            modal.style.display = "block";
+            // Display the create team modal window
+            createModal.style.display = "block";
         });
     });
 
-    // Закрываем модальное окно при клике на кнопку закрытия
-    span.onclick = function() {
-        modal.style.display = "none";
+    // Get the teams modal element and the close button
+    const teamsModal = document.getElementById("teamsModal");
+    const teamsSpan = teamsModal.querySelector(".close");
+
+    // Get all the "Find team" buttons
+    const findButtons = document.querySelectorAll('.idea-buttons .find');
+
+    // Add an event listener to each "Find team" button
+    findButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            // Prevent the default action
+            event.preventDefault();
+
+            // Get the ideasId from the value attribute of the "Create team" button in the same .idea-buttons element
+            const ideasId = event.target.closest('.idea-buttons').querySelector('.create').value;
+
+            // Make an AJAX request to the server to get the list of teams for the idea
+            fetch(`/teams/${ideasId}`)
+                .then(response => response.text())
+                .then(teamsListHtml => {
+                    // Update the teams modal window's content with the list of teams
+                    teamsModal.querySelector('.modal-content').innerHTML = teamsListHtml;
+
+                    // Display the teams modal window
+                    teamsModal.style.display = "block";
+                });
+        });
+    });
+
+    // Close the create team modal window when its close button is clicked
+    createSpan.onclick = function() {
+        createModal.style.display = "none";
     }
 
-    // Закрываем модальное окно при клике вне его области
+    // Close the teams modal window when its close button is clicked
+    teamsSpan.onclick = function() {
+        teamsModal.style.display = "none";
+    }
+
+    // Close both modal windows when clicked outside of them
     window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
+        if (event.target === createModal || event.target === teamsModal) {
+            createModal.style.display = "none";
+            teamsModal.style.display = "none";
         }
     }
-
 }
 
 initIdeasModal();
-
-
-console.log("Hello from ideasModal.js")
-
