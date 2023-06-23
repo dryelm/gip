@@ -390,6 +390,10 @@ header {
     list-style-type: none;
 }
 
+.teammates-count {
+    
+}
+
 .team-buttons button {
     margin: 10px;
     width: 200px;
