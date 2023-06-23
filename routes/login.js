@@ -14,9 +14,17 @@ router.get('/', async function (req, res) {
     res.sendFile(path.join(`${__dirname}`, '..', 'views', 'login.html'));
 });
 
-router.post('/',
-    passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/login' }));
+router.post('/', async function (req, res) {
+    passport.authenticate('local', {failureRedirect: '/login'}, (err, user, info) => {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/login'); }
+        const returnTo = req.session.returnTo || '/'
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            delete req.session.returnTo;
+            res.redirect(returnTo);
+        });
+    })(req, res);
+});
 
 module.exports = router;

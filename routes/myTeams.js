@@ -5,6 +5,7 @@ const Teams = require('../models/TeamsDB');
 
 router.get('/', async (req, res) => {
     if (!req.isAuthenticated()){
+        req.session.returnTo = "/myteams";
         res.redirect("/login");
         return;
     }

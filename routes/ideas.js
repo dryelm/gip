@@ -54,7 +54,8 @@ router.post('/', async (req, res) => {
 
 router.get("/create", async (req, res) => {
     if (!req.isAuthenticated()){
-        await res.status(401).json({message: "Unauthorized"});
+        req.session.returnTo = req.originalUrl;
+        res.redirect('/login');
         return;
     }
     const skills = await SkillsDB.aggregate([
@@ -84,7 +85,8 @@ router.post('/create', async (req, res) =>
 {
     const username = req.session.passport.user.username;
     if (!req.isAuthenticated()){
-        await res.status(401).json({message: "Unauthorized"});
+        req.session.returnTo = "/";
+        res.redirect('/login');
         return;
     }
 

@@ -5,10 +5,11 @@ const path = require("path");
 
 router.get('/', async function (req, res) {
     if (req.isAuthenticated()){
-        res.redirect('/profile/user/' + req.session.passport.user.username);
+
+        await res.redirect('/profile/user/' + req.session.passport.user.username);
         return;
     }
-
+    req.session.returnTo = '/profile';
     res.redirect('/login');
 });
 
@@ -37,6 +38,7 @@ router.get('/edit', async function (req, res) {
 
 router.get('/edit/skills', async function (req, res) {
      if (!req.isAuthenticated()){
+         req.session.returnTo = req.originalUrl;
          res.redirect('/login');
          return;
      }
