@@ -385,12 +385,12 @@ header {
     width: 70%;
 }
 
-.teammates-count {
+.members-count {
     display: flex;
     align-items: center;
 }
 
-.teammates-count .circle {
+.members-count .circle {
     width: 40px;
     height: 40px;
     background-color: #23A6F0;
@@ -406,18 +406,31 @@ header {
 }
 
 .team-buttons button {
-    margin: 10px;
+    margin: 5px;
     width: 200px;
     height: 50px;
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
-    color: #f0f0f0;
+    color: #ffffff;
     border: none;
 }
 
-.team-buttons .send {
+.team-buttons .view-requests {
+    background-color: #40BB15;
+    cursor: pointer;
+}
+
+.team-buttons .view-members {
     background-color: #23A6F0;
+    cursor: pointer;
+}
+
+.team-buttons .telegram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2ca5e0;
     cursor: pointer;
 }
 

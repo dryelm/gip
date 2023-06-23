@@ -385,12 +385,12 @@ header {
     width: 70%;
 }
 
-.teammates-count {
+.members-count {
     display: flex;
     align-items: center;
 }
 
-.teammates-count .circle {
+.members-count .circle {
     width: 40px;
     height: 40px;
     background-color: #23A6F0;
