@@ -26,6 +26,7 @@ const skillsAPI = require('./routes/api/skillsAPI');
 const path = require("path");
 const teamsRoutes = require('./routes/teams')
 const usernameAPI = require('./routes/api/usernameAPI');
+const myTeamsRoutes = require('./routes/myTeams');
 
 
 const secret = crypto.randomBytes(64).toString('hex');
@@ -82,6 +83,7 @@ app.use('/ideas', ideasRoutes);
 app.use('/teams', teamsRoutes)
 app.use('/register', registerRoutes);
 app.use('/profile', profileRoutes);
+app.use('/myteams', myTeamsRoutes);
 app.use('/api/ideas', ideasAPI);
 app.use('/api/teams', teamsAPI);
 app.use('/api/profile', profileAPI);
