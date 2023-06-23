@@ -61,6 +61,26 @@
                 </ul>
             </div>
         </div>
+
+        <div class="count-filter">
+            <div class="wrapper">
+                <label>Количество людей в команде</label>
+                <div class="values">
+                    <span id="range1">0</span>
+                    <span> &dash; </span>
+                    <span id="range2">5</span>
+                </div>
+                <div class="container">
+                    <div class="slider-track"></div>
+                    <input type="range" min="0" max="5" value="0" id="slider-1" oninput="slideOne()">
+                    <input type="range" min="0" max="5" value="5" id="slider-2" oninput="slideTwo()">
+                </div>
+                <input type="number">
+                <input type="number">
+            </div>
+        </div>
+        <script src="/scripts/countFilter.js"></script>
+
         <div class="sidebar-block apply">
             <button>Применить</button>
         </div>
@@ -83,8 +103,7 @@
                         </ul>
                     </td>
                     <td class="team-buttons" width="15%">
-                        <button class="create">Создать команду</button>
-                        <button class="find">Найти команду</button>
+                        <button class="send">✓ Отправить заявку</button>
                     </td>
                 </table>
             {{/each}}

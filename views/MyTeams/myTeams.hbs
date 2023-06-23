@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Идеи</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <link rel="stylesheet" href="/ideaSearch.css">
+</head>
+<body>
+<div class="idea-search-page">
+    <header>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="...">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+        <div class="top-bar">
+            <a class="logo" href="/ideas">GIP</a>
+            <form class="search">
+                <div class="input-wrapper">
+                    <label>
+                        <input type="text" placeholder="Поиск">
+                    </label>
+                </div>
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="nav">
+                <ul>
+                    <li><a href="/ideas" class="active">Идеи</a></li>
+                    <li><a href="/teams">Команды</a></li>
+                    <li><a href="/myteams">Мои команды</a></li>
+                    <li><a href="/profile">Личный кабинет</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+            <aside class="sidebar">
+                <div class="sidebar-block filter">
+                    <h3 class=idea-filter-text>Фильтр идей</h3>
+                </div>
+                <div class="sidebar-block search-bar">
+                    <form>
+                        <input type="search" placeholder="Поиск навыков">
+                    </form>
+                </div>
+
+                <h3 class="skills-text">Навыки</h3>
+                <div class="sidebar-block skills">
+                    <div class="skills-list" id="skills-list">
+                            <ul>
+                                {{#each skills-search}}
+                                    <li>
+                                        <input type="checkbox" id="{{name}}" value="{{name}}">
+                                        <label for="{{name}}">
+                                            {{name}}
+                                        </label>
+                                        <span class="count">
+                                            ({{count}})
+                                        </span>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                    </div>
+                </div>
+                <div class="sidebar-block apply">
+                    <button>Применить</button>
+                </div>
+            </aside>
+    <script src="/scripts/searchSkills.js"></script>
+
+    <div id="ideas" class="ideas">
+        <ul>
+            {{#each ideas}}
+                <table class="idea">
+                    <td class="full-idea-description" width="70%">
+                        <h3 class="idea-name">{{name}}</h3>
+                        <h5 class="idea-description">{{description}}</h5>
+                    </td>
+                    <td width="15%">
+                        <ul class="idea-skills">
+                            {{#each skills}}
+                                <li class="skill">{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                    <td class="idea-buttons" width="15%">
+                        <button class="create" value="{{_id}}">Создать команду</button>
+                        <button class="find">Найти команду</button>
+                    </td>
+                </table>
+            {{/each}}
+        </ul>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Идея</h3>
+            <form action="/teams/create" method="POST">
+                <input type="hidden" name="ideas_id" value="">
+                <label for="description">Описание:</label>
+                <textarea id="description" name="description"></textarea> <br>
+                <label for="maxMembers">Количество человек в команде:</label>
+                <input type="number" id="maxMembers" name="maxMembers" min="2" max="10">
+                <input type="submit" value="Создать">
+            </form>
+        </div>
+    </div>
+
+    <div id="teamsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h3>Teams</h3>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/scripts/ideasModal.js"></script>
+<script src="/scripts/searchIdeas.js"></script>
+</html>
