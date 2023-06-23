@@ -92,24 +92,29 @@
             {{#each teams}}
                 <table class="team">
                     <tr>
-                        <td scope="col" rowspan="1" class="full-team-description" width="70%">
+                        <td rowspan="1" class="full-team-description" width="70%">
                             <h3 class="team-name">{{name}}</h3>
                             <h5 class="team-description">{{description}}</h5>
                         </td>
-                        <td scope="col" rowspan="2" width="15%">
+                        <td rowspan="2" width="15%">
                             <ul class="team-skills">
                                 {{#each skills}}
                                     <li class="skill">{{this}}</li>
                                 {{/each}}
                             </ul>
                         </td>
-                        <th scope="col" rowspan="2" class="team-buttons" width="15%">
+                        <td rowspan="2" class="team-buttons" width="15%">
                             <button class="send">✓ Отправить заявку</button>
-                        </th>
+                        </td>
                     </tr>
                     <tr>
-                        <td scope="col" class="teammates-count">
-                            <label>Тут будет количество людей в команде</label>
+                        <td class="teammates-count">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <label>5 участников</label>
                         </td>
                     </tr>
                 </table>
