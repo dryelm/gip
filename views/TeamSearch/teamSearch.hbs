@@ -91,20 +91,22 @@
         <ul>
             {{#each teams}}
                 <table class="team">
-                    <td class="full-team-description" width="70%">
-                        <h3 class="team-name">{{name}}</h3>
-                        <h5 class="team-description">{{description}}</h5>
-                    </td>
-                    <td width="15%">
-                        <ul class="team-skills">
-                            {{#each skills}}
-                                <li class="skill">{{this}}</li>
-                            {{/each}}
-                        </ul>
-                    </td>
-                    <td class="team-buttons" width="15%">
-                        <button class="send">✓ Отправить заявку</button>
-                    </td>
+                    <tr>
+                        <td class="full-team-description" width="70%">
+                            <h3 class="team-name">{{name}}</h3>
+                            <h5 class="team-description">{{description}}</h5>
+                        </td>
+                        <td width="15%">
+                            <ul class="team-skills">
+                                {{#each skills}}
+                                    <li class="skill">{{this}}</li>
+                                {{/each}}
+                            </ul>
+                        </td>
+                        <td class="team-buttons" width="15%">
+                            <button class="send">✓ Отправить заявку</button>
+                        </td>
+                    </tr>
                 </table>
             {{/each}}
         </ul>
