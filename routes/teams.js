@@ -27,11 +27,16 @@ router.get('/', async (req, res) => {
                 }
             }
         ])
+        teams.forEach(team => {
+            team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
+        });
+
         res.render('TeamSearch/teamSearch.hbs', {"skills-search": skills.filter(elem => elem["count"] !== 0), "teams": teams});
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
     }
 });
+
 
 router.get('/:ideasId', async (req, res) => {
     try {
@@ -45,7 +50,6 @@ router.get('/:ideasId', async (req, res) => {
         if (teams.length === 0) {
             // If there are no teams, render a message saying that there are no teams
             res.render('noTeams.hbs');
-            return;
         } else {
             // If there are teams, render the list of teams using Handlebars
             res.render('teamsList.hbs', { teams });

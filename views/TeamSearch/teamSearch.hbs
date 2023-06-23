@@ -79,13 +79,12 @@
                 <input type="number">
             </div>
         </div>
-        <script src="/scripts/countFilter.js"></script>
 
         <div class="sidebar-block apply">
             <button>Применить</button>
         </div>
     </aside>
-    <script src="/scripts/searchSkills.js"></script>
+    <script src="/scripts/teamsFilter.js"></script>
 
     <div id="teams" class="teams">
         <ul>
@@ -109,12 +108,13 @@
                     </tr>
                     <tr>
                         <td class="members-count">
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <label>5 участников</label>
+                            {{#each members}}
+                                <div class="circle blue"></div>
+                            {{/each}}
+                            {{#each emptyCirclesArray}}
+                                <div class="circle gray"></div>
+                            {{/each}}
+                            <label>{{maxCountMembers}} участников</label>
                         </td>
                     </tr>
                 </table>
