@@ -104,7 +104,9 @@
                             </ul>
                         </td>
                         <td rowspan="2" class="team-buttons" width="15%">
-                            <button class="send">✓ Отправить заявку</button>
+                            {{#if maySendApplication}}
+                            <button class="send" value = {{_id}}>✓ Отправить заявку</button>
+                            {{/if}}
                             <button class="full-info" value="{{_id}}">Подробнее</button>
                         </td>
                     </tr>
@@ -140,6 +142,7 @@
         </div>
     </div>
     <script src="/scripts/fullInfoTeamModal.js"></script>
+    <script src="/scripts/sendApplication.js"></script>
 </div>
 
 </body>

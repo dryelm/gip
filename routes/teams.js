@@ -7,7 +7,7 @@ const SkillsDB = require("../models/SkillsDB");
 
 router.get('/', async (req, res) => {
     try {
-        const teams = await Teams.find()
+        const teams = await Teams.find({ members: { $nin: [req.user.username] } })
         const skills = await SkillsDB.aggregate([
             {
                 $lookup: {
@@ -30,7 +30,9 @@ router.get('/', async (req, res) => {
         teams.forEach(team => {
             team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
         });
-
+        teams.forEach(team => {
+            team.maySendApplication  = !(team.applications.includes(req.user.username));
+        });
         res.render('TeamSearch/teamSearch.hbs', {"skills-search": skills.filter(elem => elem["count"] !== 0), "teams": teams});
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
@@ -44,7 +46,7 @@ router.get('/:ideasId', async (req, res) => {
         const ideasId = req.params.ideasId;
 
         // Find all teams with the specified idea
-        const teams = await Teams.find({ idea: ideasId });
+        const teams = await Teams.find({ idea: ideasId, members: { $nin: [req.user.username] }});
 
         // Check if there are any teams
         if (teams.length === 0) {
