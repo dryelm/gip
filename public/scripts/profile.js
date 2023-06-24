@@ -1,13 +1,13 @@
 // функция для создания редактируемого поля
 function makeEditable(field) {
     // получаем текущее значение поля
-    let value = field.querySelector('h2, p').textContent;
-    let oldElement = field.querySelector('h2, p');
+    let value = field.querySelector('p').textContent;
+    let oldElement = field.querySelector('p');
     // создаем новый элемент input
     let input = document.createElement('input');
     input.type = 'text';
     input.value = value;
-    // заменяем элемент p или h2 на input
+    // заменяем элемент p на input
     field.replaceChild(input, oldElement);
     // создаем кнопку "Сохранить"
     let saveButton = document.createElement('button');
@@ -22,24 +22,22 @@ function makeEditable(field) {
     saveButton.addEventListener('click', async function () {
         // получаем новое значение поля
         let newValue = input.value;
-        // отправляем новое значение на сервер
+        const username = document.querySelector('.username h2').textContent;
         let data = {
-            name: document.querySelector('.username h2') ? document.querySelector('.username h2').textContent : document.querySelector('.username input').value,
             email: document.querySelector('.email p') ? document.querySelector('.email p').textContent : document.querySelector('.email input').value,
             telegram: document.querySelector('.telegram p') ? document.querySelector('.telegram p').textContent : document.querySelector('.telegram input').value,
             about: document.querySelector('.about p') ? document.querySelector('.about p').textContent : document.querySelector('.about input').value,
             skills: Array.from(document.querySelectorAll('.skills p')).map(skill => skill.textContent).join(',')
         };
-        data[field.className] = newValue;
-        await fetch('/users', {
-            method: 'POST',
+        await fetch(`/api/profile/${username}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         });
         //23 строчки слэшэним
-        let len = oldElement.tagName === 'H2' ? 20 : 30
+        let len = 30
         if (newValue.length > len) {
             newValue = newValue.split('').reduce((acc, val, index) => {
                 return index % len === 0 && index > 0 ? `${acc}\n${val}` : `${acc}${val}`;
