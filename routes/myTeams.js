@@ -10,7 +10,13 @@ router.get('/', async (req, res) => {
         return;
     }
     try {
-        const teams = await Teams.find({owner: req.user.username})
+        const teams = await Teams.find();
+        teams.forEach(team => {
+            team.isOwner = (team.owner === req.user.username);
+        });
+        teams.forEach(team => {
+            team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
+        });
         res.render('MyTeams/myTeams.hbs', {"teams": teams});
     } catch (err) {
         res.status(500).json({ message: "Server Error" });

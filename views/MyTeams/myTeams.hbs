@@ -5,7 +5,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои команды</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <link rel="stylesheet" href="/myTeams.css">
 </head>
 <body>
@@ -34,59 +33,6 @@
             </div>
         </div>
     </header>
-    <aside class="sidebar">
-        <div class="sidebar-block filter">
-            <h3 class=team-filter-text>Фильтр команд</h3>
-        </div>
-        <div class="sidebar-block search-bar">
-            <form>
-                <input type="search" placeholder="Поиск навыков">
-            </form>
-        </div>
-
-        <h3 class="skills-text">Навыки</h3>
-        <div class="sidebar-block skills">
-            <div class="skills-list" id="skills-list">
-                <ul>
-                    {{#each skills-search}}
-                        <li>
-                            <input type="checkbox" id="{{name}}" value="{{name}}">
-                            <label for="{{name}}">
-                                {{name}}
-                            </label>
-                            <span class="count">
-                                ({{count}})
-                            </span>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-
-        <div class="count-filter">
-            <div class="wrapper">
-                <label>Количество людей в команде</label>
-                <div class="values">
-                    <span id="range1">0</span>
-                    <span> &dash; </span>
-                    <span id="range2">5</span>
-                </div>
-                <div class="container">
-                    <div class="slider-track"></div>
-                    <input type="range" min="0" max="5" value="0" id="slider-1" oninput="slideOne()">
-                    <input type="range" min="0" max="5" value="5" id="slider-2" oninput="slideTwo()">
-                </div>
-                <input type="number">
-                <input type="number">
-            </div>
-        </div>
-        <script src="/scripts/countFilter.js"></script>
-
-        <div class="sidebar-block apply">
-            <button>Применить</button>
-        </div>
-    </aside>
-    <script src="/scripts/searchSkills.js"></script>
 
     <div id="teams" class="teams">
         <ul>
@@ -105,22 +51,21 @@
                             </ul>
                         </td>
                         <td rowspan="2" class="team-buttons" width="15%">
-                            <button class="view-requests">Заявки</button>
-                            <button class="view-members">Участники</button>
-                            <button class="telegram">
-                                <img src="https://antella.salon/wp-content/uploads/2022/04/telega.png"  width="25" height="25" alt="Telegram">
-                                Telegram
-                            </button>
+                            {{#if isOwner}}
+                                <button class="view-requests">Заявки</button>
+                            {{/if}}
+                            <button class="full-info">Подробнее</button>
                         </td>
                     </tr>
                     <tr>
                         <td class="members-count">
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <label>5 участников</label>
+                            {{#each members}}
+                                <div class="circle blue"></div>
+                            {{/each}}
+                            {{#each emptyCirclesArray}}
+                                <div class="circle gray"></div>
+                            {{/each}}
+                            <label> {{maxCountMembers}} {{#isLessThan maxCountMembers 5}} участника {{else}} участников {{/isLessThan}}</label>
                         </td>
                     </tr>
                 </table>
@@ -129,5 +74,5 @@
     </div>
 </div>
 </body>
-
+<script src="/scripts/searchTeams.js"></script>
 </html>
