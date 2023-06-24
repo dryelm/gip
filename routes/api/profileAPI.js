@@ -16,6 +16,9 @@ router.put('/:username', async (req, res) => {
         return;
     }
 
+
+
+
     try {
         const user = await Users.findOne({ username: username });
         if (!user) {
@@ -28,6 +31,15 @@ router.put('/:username', async (req, res) => {
         user.telegram = req.body.telegram || user.telegram;
         user.about = req.body.about || user.about;
 
+        if (!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/.test(user.email))) {
+            await res.status(400).json({message: "Invalid email"});
+            return;
+        }
+
+        if (user.telegram && !(/^[a-zA-Z0-9]+$/.test(user.telegram))) {
+            await res.status(400).json({message: "Invalid telegram"});
+            return;
+        }
         // Обновление навыков пользователя
         if (req.body.skills) {
             const skills = await Promise.all(req.body.skills.map(skill => Skills.findOne({ name: skill })));
@@ -39,7 +51,6 @@ router.put('/:username', async (req, res) => {
             }
         }
         await user.save();
-
 
         res.status(200).json({ message: 'User updated successfully' });
     } catch (err) {

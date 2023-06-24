@@ -38,6 +38,10 @@ router.post('/', async (req, res) => {
         return;
     }
 
+    if (!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/.test(email))) {
+        await res.redirect('/register');
+        return;
+    }
 
     // Добавление нового пользователя в базу данных
     try {

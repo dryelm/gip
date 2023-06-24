@@ -84,7 +84,7 @@ router.post("/create", async (req, res) => {
     const description = req.body.description;
     const maxCountMembers = req.body.maxMembers;
 
-    if (!(1<=maxCountMembers && maxCountMembers<=10)) {
+    if (!(2<=maxCountMembers && maxCountMembers<=10)) {
         res.status(400).json({"message":"wrong maxCountMembers"});
         return;
     }
@@ -94,12 +94,11 @@ router.post("/create", async (req, res) => {
         owner: username,
         description: description,
         skills: skills,
-        members: [],
+        members: [username],
         maxCountMembers: maxCountMembers
     });
 
     await team.save();
-
     await res.redirect('/ideas');
 
 })
