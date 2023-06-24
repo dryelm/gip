@@ -433,6 +433,10 @@ header {
     cursor: pointer;
 }
 
+.team-buttons .full-info {
+    background-color: #24A6F0;
+    cursor: pointer;
+}
 .teams {
     position: absolute;
     left: 19%;
