@@ -16,9 +16,6 @@ router.put('/:username', async (req, res) => {
         return;
     }
 
-
-
-
     try {
         const user = await Users.findOne({ username: username });
         if (!user) {
