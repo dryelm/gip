@@ -114,7 +114,7 @@
                             {{#each emptyCirclesArray}}
                                 <div class="circle gray"></div>
                             {{/each}}
-                            <label>{{maxCountMembers}} участников</label>
+                            <label> {{maxCountMembers}} {{#isLessThan maxCountMembers 5}} участника {{else}} участников {{/isLessThan}}</label>
                         </td>
                     </tr>
                 </table>

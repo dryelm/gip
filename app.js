@@ -3,8 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const hbs = require('hbs');
-const exphbs = require('express-handlebars');
+
+const hbs= require('hbs');
 const app = express();
 const session = require('express-session');
 const crypto = require('crypto');
@@ -28,6 +28,19 @@ const teamsRoutes = require('./routes/teams')
 const usernameAPI = require('./routes/api/usernameAPI');
 const myTeamsRoutes = require('./routes/myTeams');
 
+hbs.registerHelper("repeat", function (times, options) {
+    let result = '';
+    for (let i = 0; i < times; i++) {
+        result += options.fn(this);
+    }
+    return result;
+})
+hbs.registerHelper('isLessThan', function (value, compareValue, options) {
+    if (value < compareValue) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
 
 const secret = crypto.randomBytes(64).toString('hex');
 
@@ -36,8 +49,9 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-app.engine('handlebars', exphbs.engine());
-app.set('view engine', 'handlebars');
+
+
+app.set('view engine', 'hbs');
 
 app.use(passport.initialize());
 app.use(passport.session());
