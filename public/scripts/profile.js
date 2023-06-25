@@ -32,7 +32,6 @@ function makeEditable(field) {
         let data = {
             email: document.querySelector('.email p') ? document.querySelector('.email p').textContent : document.querySelector('.email input').value,
             telegram: document.querySelector('.telegram a ') ? document.querySelector('.telegram a').textContent : document.querySelector('.telegram input').value,
-            about: document.querySelector('.about p') ? document.querySelector('.about p').textContent : document.querySelector('.about input').value,
             skills: Array.from(document.querySelectorAll('.skills p')).map(skill => skill.textContent).join(',')
         };
         await fetch(`/api/profile/${username}`, {
@@ -136,10 +135,7 @@ function makeEditableAbout(field) {
         let newValue = input.value;
         const username = document.querySelector('.username h2').textContent;
         let data = {
-            email: document.querySelector('.email p') ? document.querySelector('.email p').textContent : document.querySelector('.email textarea').value,
-            telegram: document.querySelector('.telegram p') ? document.querySelector('.telegram p').textContent : document.querySelector('.telegram textarea').value,
             about: document.querySelector('.about p') ? document.querySelector('.about p').textContent : document.querySelector('.about textarea').value,
-            skills: Array.from(document.querySelectorAll('.skills p')).map(skill => skill.textContent).join(',')
         };
         await fetch(`/api/profile/${username}`, {
             method: 'PUT',
