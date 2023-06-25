@@ -407,8 +407,6 @@ header {
     list-style-type: none;
 }
 
-
-
 .team-buttons button {
     margin: 10px;
     width: 200px;
@@ -456,6 +454,16 @@ header {
     max-width: 500px;
     border-radius: 10px; /* Add this line to make the corners rounded */
     position: relative;
+}
+
+.modal-info-content {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.modal-info-content label{
+    margin-top: 1%;
 }
 
 .close {
