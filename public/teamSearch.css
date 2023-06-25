@@ -373,10 +373,6 @@ header {
     margin-bottom: 1%;
 }
 
-.team-description {
-    width: 70%;
-}
-
 .members-count {
     display: flex;
     align-items: center;

@@ -382,10 +382,6 @@ header {
     margin-bottom: 1%;
 }
 
-.team-description {
-    width: 70%;
-}
-
 .members-count {
     display: flex;
     align-items: center;
@@ -460,7 +456,8 @@ header {
     margin: 15% auto; /* Center the modal vertically and horizontally */
     padding: 20px;
     border: 1px solid #888;
-    width: fit-content;
+    width: 80%;
+    max-width: 500px;
     border-radius: 10px; /* Add this line to make the corners rounded */
     position: relative;
 }

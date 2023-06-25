@@ -9,39 +9,41 @@
 </head>
 <body>
 <h3>Команды</h3>
-<div id="teams" class="teams">
-    <ul>
-        {{#each teams}}
-            <table class="team">
-                <tr>
-                    <td rowspan="1" class="full-team-description" width="70%">
-                        <h3 class="team-name">{{name}}</h3>
-                        <h5 class="team-description">{{description}}</h5>
-                    </td>
-                    <td rowspan="2" width="15%">
-                        <ul class="team-skills">
-                            {{#each skills}}
-                                <li class="skill">{{this}}</li>
-                            {{/each}}
-                        </ul>
-                    </td>
-                    <td rowspan="2" class="team-buttons" width="15%">
-                        <button class="send">✓ Отправить заявку</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="members-count">
-                        {{#each members}}
-                            <div class="circle blue"></div>
-                        {{/each}}
-                        {{#each emptyCirclesArray}}
-                            <div class="circle gray"></div>
-                        {{/each}}
-                        <label>{{maxCountMembers}} участников</label>
-                    </td>
-                </tr>
-            </table>
-        {{/each}}
-    </ul>
-</div>
+<table class="teams-list">
+    <tr>
+        <th>Команда</th>
+        <th>Описание</th>
+        <th>Навыки</th>
+        <th></th>
+    </tr>
+    {{#each teams}}
+    <tr class="team-info">
+        <td class="team-name" id="name">{{name}}</td>
+        <td class="team-description" id="description">{{description}}</td>
+        <td class="team-skills" rowspan="2">
+            {{#each skills}}
+                <ul>
+                    {{this}}
+                </ul>
+            {{/each}}
+        </td>
+        <td rowspan="2" class="team-buttons">
+            {{#if maySendApplication}}
+                <button class="send" value = {{_id}}>✓ Отправить заявку</button>
+            {{/if}}
+        </td>
+    </tr>
+    <tr>
+        <td class="members-count">
+            {{#each members}}
+            <div class="circle blue"></div>
+            {{/each}}
+            {{#each emptyCirclesArray}}
+            <div class="circle gray"></div>
+            {{/each}}
+            <label>{{maxCountMembers}} участников</label>
+        </td>
+    </tr>
+    {{/each}}
+</table>
 </body>
