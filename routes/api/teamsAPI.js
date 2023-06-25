@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Teams = require('../../models/TeamsDB');
 const Ideas = require("../../models/IdeasDB");
+const Users = require("../../models/UsersDB");
 const { Types } = require('mongoose');
 
 
@@ -107,12 +108,16 @@ router.get('/:teamId/requests', async (req, res) => {
         // get requests for the specified team from the database
         const team = await Teams.findById(teamId);
         const requests = team.applications;
+        const userInfos = await requests.map(async username => {
+            return Users.findOne({ username: username });
+        });
+
         if(requests.length === 0) {
             res.render('noRequests.hbs');
         }
         else {
             // render the list of requests using Handlebars
-            res.render('requestsList.hbs', { requests });
+            res.render('requestsList.hbs', { requests: userInfos });
         }
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
