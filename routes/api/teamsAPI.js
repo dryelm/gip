@@ -3,6 +3,7 @@ const router = express.Router();
 const Teams = require('../../models/TeamsDB');
 const Users = require("../../models/UsersDB");
 const { Types } = require('mongoose');
+const path = require("path");
 
 
 router.get('/', async (req, res) => {
@@ -73,7 +74,7 @@ router.put('/:teamId', async (req, res) => {
 router.delete('/:teamId/requests/accept/:username', async (req, res) => {
     try {
         const { teamId, username } = req.params;
-        const team = await Team.findById(teamId);
+        const team = await Teams.findById(teamId);
         if (!team) {
             return res.status(404).json({ message: 'Команда не найдена' });
         }
@@ -88,7 +89,7 @@ router.delete('/:teamId/requests/accept/:username', async (req, res) => {
 router.delete('/:teamId/requests/decline/:username', async (req, res) => {
     try {
         const { teamId, username } = req.params;
-        const team = await Team.findById(teamId);
+        const team = await Teams.findById(teamId);
         if (!team) {
             return res.status(404).json({ message: 'Команда не найдена' });
         }
@@ -115,8 +116,9 @@ router.get('/:teamId/requests', async (req, res) => {
             res.render('noRequests.hbs');
         }
         else {
+
             // render the list of requests using Handlebars
-            res.render('requestsList.hbs', { requests: userInfos });
+            await res.render('requestsList.hbs', { requests: userInfos, teamId: teamId });
         }
     } catch (err) {
         res.status(500).json({ message: "Server Error" });

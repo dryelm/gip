@@ -16,10 +16,48 @@ viewRequestsButtons.forEach(button => {
 
                 // Display the requests modal window
                 requestsModal.style.display = 'block';
-            });
+            }).then(addActions);
     });
 });
 
 closeModalButton.forEach(btn => btn.addEventListener('click', () => {
     modal.forEach(m => m.style.display = 'none');
 }));
+
+function addActions() {
+    const acceptBtns = document.querySelectorAll('.accept');
+    const rejectBtns = document.querySelectorAll('.reject');
+    const teamId = document.querySelector('.requests').id;
+
+    acceptBtns.forEach(btn => btn.addEventListener('click', () => {
+        const username = btn.value;
+
+        fetch(`/api/teams/${teamId}/requests/accept/${username}`, {method: 'DELETE'})
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'OK') {
+                    // Hide the request
+
+                } else {
+                    alert(result);
+                }
+            });
+        btn.closest('.member-info').style.display = 'none';
+    }));
+
+    rejectBtns.forEach(btn => btn.addEventListener('click', () => {
+        const username = btn.value;
+
+        fetch(`/api/teams/${teamId}/requests/decline/${username}`, {method: 'DELETE'})
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'OK') {
+                    // Hide the request
+
+                } else {
+                    alert(result);
+                }
+            });
+        btn.closest('.member-info').style.display = 'none';
+    }));
+}

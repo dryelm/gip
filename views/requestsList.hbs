@@ -9,7 +9,7 @@
 </head>
 <body>
 <h3>Заявки</h3>
-<table class="requests">
+<table class="requests" id="{{teamId}}">
     <tr>
         <th>Логин</th>
         <th>Почта</th>
@@ -31,10 +31,12 @@
             </td>
             <td class="member-about" id="about"></td>
             <td class="request-buttons">
-                <button class="accept" value="">Принять</button>
-                <button class="reject" value="">Отклонить</button>
+                <button class="accept" value="{{username}}">Принять</button>
+                <button class="reject" value="{{username}}">Отклонить</button>
             </td>
         </tr>
     {{/each}}
 </table>
+
+<script src="/scripts/requestsListBtns.js"></script>
 </body>
