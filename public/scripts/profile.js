@@ -1,8 +1,13 @@
 // функция для создания редактируемого поля
+
+function makeHrefTelegram(telegram){
+    const telegramField = document.querySelector('.telegram a');
+    telegramField.href = `https://t.me/${telegram}`;
+}
 function makeEditable(field) {
     // получаем текущее значение поля
-    let value = field.querySelector('p').textContent;
-    let oldElement = field.querySelector('p');
+    let value = field.querySelector('a, p').textContent;
+    let oldElement = field.querySelector('a, p');
     // создаем новый элемент input
     let input = document.createElement('input');
     input.type = 'text';
@@ -25,7 +30,7 @@ function makeEditable(field) {
         const username = document.querySelector('.username h2').textContent;
         let data = {
             email: document.querySelector('.email p') ? document.querySelector('.email p').textContent : document.querySelector('.email input').value,
-            telegram: document.querySelector('.telegram p') ? document.querySelector('.telegram p').textContent : document.querySelector('.telegram input').value,
+            telegram: document.querySelector('.telegram a ') ? document.querySelector('.telegram a').textContent : document.querySelector('.telegram input').value,
             about: document.querySelector('.about p') ? document.querySelector('.about p').textContent : document.querySelector('.about input').value,
             skills: Array.from(document.querySelectorAll('.skills p')).map(skill => skill.textContent).join(',')
         };
@@ -43,13 +48,15 @@ function makeEditable(field) {
                 return index % len === 0 && index > 0 ? `${acc}\n${val}` : `${acc}${val}`;
             }, '');
         }
-        // заменяем элемент input на p или h2 с обновленным значением
+        // заменяем элемент input на p с обновленным значением
         let newElement = document.createElement(oldElement.tagName);
         newElement.textContent = newValue;
+
         field.replaceChild(newElement, input);
         // удаляем кнопку "Сохранить"
         field.removeChild(saveButton);
         undoButton.textContent = 'Изменить';
+        makeHrefTelegram(data.telegram);
     });
 
     // обрабатываем нажатие на кнопку "Отменить"
@@ -73,7 +80,7 @@ for (let i = 0; i < editButtons.length; i++) {
         // проверяем, находится ли поле в режиме редактирования
         if (field.querySelector('input')) {
             // если поле в режиме редактирования, отменяем изменения
-            let originalElement = document.createElement(field.querySelector('p').tagName);
+            let originalElement = document.createElement(field.querySelector('a, p').tagName);
             originalElement.textContent = field.querySelector('input').value;
             field.replaceChild(originalElement, field.querySelector('input'));
             // удаляем кнопку "Сохранить"
