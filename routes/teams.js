@@ -56,6 +56,10 @@ router.get('/:ideasId', async (req, res) => {
         let teams = await Teams.find({ idea: ideasId});
         teams = teams.filter(team => !team.members.includes(req.user.username));
         teams = teams.filter(team => team.isActive);
+        if(teams.length === 0){
+            res.render('noTeams.hbs');
+            return;
+        }
         teams.forEach(team => {
             team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
         });

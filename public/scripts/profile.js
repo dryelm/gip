@@ -37,7 +37,7 @@ function makeEditable(field) {
             body: JSON.stringify(data)
         });
         //23 строчки слэшэним
-        let len = 30
+        let len = 23
         if (newValue.length > len) {
             newValue = newValue.split('').reduce((acc, val, index) => {
                 return index % len === 0 && index > 0 ? `${acc}\n${val}` : `${acc}${val}`;
@@ -141,7 +141,7 @@ function makeEditableAbout(field) {
             body: JSON.stringify(data)
         });
         //23 строчки слэшэним
-        let len = 30
+        let len = 23
         if (newValue.length > len) {
             newValue = newValue.split('').reduce((acc, val, index) => {
                 return index % len === 0 && index > 0 ? `${acc}\n${val}` : `${acc}${val}`;
