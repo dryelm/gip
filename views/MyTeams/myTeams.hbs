@@ -54,7 +54,7 @@
                             {{#if isOwner}}
                                 <button class="view-requests" value="{{_id}}">Заявки</button>
                             {{/if}}
-                            <button class="full-info">Подробнее</button>
+                                <button class="full-info" value="{{_id}}">Подробнее</button>
                         </td>
                     </tr>
                     <tr>
@@ -74,12 +74,32 @@
     </div>
     <div id="requests-modal" class="modal">
         <div class="modal-content">
-            <span class="close">×</span>
+            <span class="close">&times;</span>
+            <div class="modal-info-content">
+            </div>
         </div>
     </div>
+    <script src="/scripts/viewRequests.js"></script>
+
+    <div id="fullInfo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-info-content">
+                <h3 id="team-name"></h3>
+                <label class="team-idea-description-header">Описание идеи</label>
+                <h5 id="team-idea-description"></h5>
+                <label class="team-description-header">Описание команды</label>
+                <h5 id="team-description"></h5>
+                <label id="team-owner"></label>
+                <label id="team-members"></label>
+                <label id="team-skills"></label>
+                <label id="free-slots"></label>
+            </div>
+        </div>
+    </div>
+    <script src="/scripts/fullInfoTeamModal.js"></script>
 
 </div>
 </body>
-<script src="/scripts/viewRequests.js"></script>
 <script src="/scripts/searchTeams.js"></script>
 </html>

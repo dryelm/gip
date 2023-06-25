@@ -11,7 +11,7 @@ viewRequestsButtons.forEach(button => {
             .then(response => response.text())
             .then(requestsListHtml => {
                 // Update the requests modal window's content with the list of requests
-                requestsModal.querySelector('.modal-content').innerHTML = requestsListHtml;
+                requestsModal.querySelector('.modal-info-content').innerHTML = requestsListHtml;
 
                 // Display the requests modal window
                 requestsModal.style.display = 'block';

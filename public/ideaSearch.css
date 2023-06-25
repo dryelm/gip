@@ -258,7 +258,8 @@ header {
 }
 
 .idea {
-    border: solid gray 1px;
+    border: 1px solid gray;
+    border-radius: 5px;
     margin-top: 1%;
     margin-bottom: 1%;
     width: 95%;
