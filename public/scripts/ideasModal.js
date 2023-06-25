@@ -8,11 +8,15 @@ function initIdeasModal() {
 
     // Add an event listener to each "Create team" button
     createButtons.forEach((button) => {
-        button.addEventListener('click', (event) => {
+        button.addEventListener('click', async (event) => {
             // Prevent the default action
             event.preventDefault();
-
+            let response = 200
+            await fetch('/api/username').then(res => response = res.status)
             // Get the ideasId from the value attribute of the button
+            if (response !== 200) {
+                window.location.href = "/login";
+            }
             const ideasId = event.target.value;
 
             // Update the form in the create team modal window

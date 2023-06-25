@@ -31,7 +31,7 @@ const teamsSchema = new mongoose.Schema({
     maxCountMembers:{
         type: Number
     },
-    applications:{
+    requests:{
         type: [String]
     }
 });
