@@ -145,7 +145,7 @@ header {
     justify-content: space-between;
 }
 
-.edit-button-special, .edit-button-h2, .edit-button  {
+.edit-button-about, .edit-button-h2, .edit-button  {
     color: gray;
     float: right;
     cursor: pointer;
@@ -214,4 +214,8 @@ footer {
     left: 47.5%;
     margin-top: 1%;
     margin-bottom: 1%;
+}
+
+.logout-button:hover {
+    background-color: #da0000;
 }
