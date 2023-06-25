@@ -27,6 +27,7 @@ const path = require("path");
 const teamsRoutes = require('./routes/teams')
 const usernameAPI = require('./routes/api/usernameAPI');
 const myTeamsRoutes = require('./routes/myTeams');
+const logoutRoutes = require('./routes/logout');
 
 hbs.registerHelper("repeat", function (times, options) {
     let result = '';
@@ -98,6 +99,7 @@ app.use('/teams', teamsRoutes)
 app.use('/register', registerRoutes);
 app.use('/profile', profileRoutes);
 app.use('/myteams', myTeamsRoutes);
+app.use('/logout', logoutRoutes);
 app.use('/api/ideas', ideasAPI);
 app.use('/api/teams', teamsAPI);
 app.use('/api/profile', profileAPI);
