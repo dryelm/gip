@@ -9,7 +9,15 @@ const path = require("path");
 router.delete("/delete/:id", async (req, res) => {
     const id = req.params.id;
     try {
+        const team = await Teams.findById(id);
+        const promise = team.members.map(async (member) => {
+            const user = await Users.findOne({username: member});
+            user.currentProjects = user.currentProjects.filter(teamId => teamId.toString() !== id);
+            await user.save();
+        });
+        await Promise.all(promise);
         await Teams.findByIdAndDelete(id);
+
         res.status(200).json({ message: "Team deleted" });
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
