@@ -39,7 +39,11 @@ router.get('/', async (req, res) => {
         }, []);
 
 
-        res.render('TeamSearch/teamSearch.hbs', {"skills-search": skillCounts, "teams": teams.filter(team => team.isActive)});
+        res.render('TeamSearch/teamSearch.hbs', {
+            "skills-search": skillCounts,
+            "teams": teams.filter(team => team.isActive),
+            "isAuthenticated": req.isAuthenticated()}
+        );
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
     }

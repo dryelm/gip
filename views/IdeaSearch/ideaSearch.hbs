@@ -29,7 +29,7 @@
                     <li><a href="/ideas" class="active">Идеи</a></li>
                     <li><a href="/teams">Команды</a></li>
                     <li><a href="/myteams">Мои команды</a></li>
-                    <li><a href="/profile">Личный кабинет</a></li>
+                    <li><a href="/profile">{{#if isAuthenticated}}Личный кабинет{{else}}Войти{{/if}}</a></li>
                 </ul>
             </div>
         </div>

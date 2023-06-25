@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
             }
         ]);
 
-        await res.render("IdeaSearch/ideaSearch.hbs", {"ideas":ideas, "skills-search":skills});
+        await res.render("IdeaSearch/ideaSearch.hbs", {"ideas":ideas, "skills-search":skills, "isAuthenticated": req.isAuthenticated()});
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
