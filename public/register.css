@@ -15,6 +15,10 @@ body {
     padding: 20px;
     flex-direction: column;
 }
+.error {
+    color: #da0000;
+    font-weight: bold;
+}
 
 h1 {
     text-align: center;

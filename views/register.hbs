@@ -8,10 +8,16 @@
 </head>
 <body>
 <h1>Регистрация</h1>
+
 <form action="/register" method="post">
+    <div class="error">
+        {{#if error}}
+            {{error}}
+        {{/if}}
+    </div>
   <div class="form-group">
     <label for="username">Логин:</label>
-    <input type="text" id="username" name="username">
+    <input type="text" id="username" name="username" placeholder="Больше 4, меньше 20 символов латинских букв">
   </div>
   <div class="form-group">
     <label for="email">Email:</label>
@@ -19,7 +25,7 @@
   </div>
   <div class="form-group">
     <label for="password">Пароль:</label>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="password" placeholder="Больше 4, меньше 20 символов">
   </div>
   <div class="form-group">
     <input type="submit" value="Зарегистрироваться">
