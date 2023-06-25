@@ -4,10 +4,14 @@ const router = express.Router();
 const Teams = require('../models/TeamsDB');
 const Ideas = require("../models/IdeasDB");
 const SkillsDB = require("../models/SkillsDB");
+const {isAuthenticated} = require("passport/lib/http/request");
 
 router.get('/', async (req, res) => {
     try {
-        const teams = await Teams.find({ members: { $nin: [req.user.username] } })
+        let teams = await Teams.find();
+        if(isAuthenticated()){
+            teams = teams.filter(team => !team.members.includes(req.user.username));
+        }
         const skills = await SkillsDB.aggregate([
             {
                 $lookup: {
@@ -30,9 +34,17 @@ router.get('/', async (req, res) => {
         teams.forEach(team => {
             team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
         });
-        teams.forEach(team => {
-            team.maySendApplication  = !(team.applications.includes(req.user.username));
-        });
+        if(!req.isAuthenticated()) {
+            teams.forEach(team => {
+                team.maySendApplication  = true;
+            });
+        }
+        else {
+            teams.forEach(team => {
+                team.maySendApplication  = !(team.applications.includes(req.user.username));
+            });
+        }
+
         res.render('TeamSearch/teamSearch.hbs', {"skills-search": skills.filter(elem => elem["count"] !== 0), "teams": teams});
     } catch (err) {
         res.status(500).json({ message: "Server Error" });

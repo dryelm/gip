@@ -50,6 +50,10 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:teamId', async (req, res) => {
     try {
+        if (!req.isAuthenticated()){
+            await res.redirect(302, '/login');
+            return;
+        }
         const teamId = req.params.teamId;
         const username = req.user.username;
         const team = await Teams.findById(teamId);
