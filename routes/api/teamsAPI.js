@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Teams = require('../../models/TeamsDB');
-const Ideas = require("../../models/IdeasDB");
 const Users = require("../../models/UsersDB");
 const { Types } = require('mongoose');
 
@@ -112,7 +111,7 @@ router.get('/:teamId/requests', async (req, res) => {
             return Users.findOne({ username: username });
         });
         const userInfos = await Promise.all(promises);
-        if(requests.length === 0) {
+        if (requests.length === 0) {
             res.render('noRequests.hbs');
         }
         else {

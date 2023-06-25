@@ -4,12 +4,12 @@ const router = express.Router();
 const Teams = require('../models/TeamsDB');
 const Ideas = require("../models/IdeasDB");
 const SkillsDB = require("../models/SkillsDB");
-const {isAuthenticated} = require("passport/lib/http/request");
+
 
 router.get('/', async (req, res) => {
     try {
         let teams = await Teams.find();
-        if(isAuthenticated()){
+        if(req.isAuthenticated()){
             teams = teams.filter(team => !team.members.includes(req.user.username));
         }
         const skills = await SkillsDB.aggregate([
