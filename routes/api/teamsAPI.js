@@ -108,10 +108,10 @@ router.get('/:teamId/requests', async (req, res) => {
         // get requests for the specified team from the database
         const team = await Teams.findById(teamId);
         const requests = team.applications;
-        const userInfos = await requests.map(async username => {
+        const promises = await requests.map(async username => {
             return Users.findOne({ username: username });
         });
-
+        const userInfos = await Promise.all(promises);
         if(requests.length === 0) {
             res.render('noRequests.hbs');
         }
