@@ -4,6 +4,7 @@ function makeHrefTelegram(telegram){
     const telegramField = document.querySelector('.telegram a');
     telegramField.href = `https://t.me/${telegram}`;
 }
+
 function makeEditable(field) {
     // получаем текущее значение поля
     let value = field.querySelector('a, p').textContent;
