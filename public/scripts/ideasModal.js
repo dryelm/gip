@@ -64,7 +64,7 @@ function initIdeasModal() {
 
                     // Display the teams modal window
                     teamsModal.style.display = "block";
-                }).catch(function (err) {
+                }).then(addEvents).catch(function (err) {
                     window.location.href = '/login';
                 });
         });
@@ -89,4 +89,14 @@ function initIdeasModal() {
     }
 }
 
+function addEvents() {
+    const sendRequestBtns = document.querySelectorAll('.send');
+
+    sendRequestBtns.forEach(btn => btn.addEventListener('click', () => {
+        const teamId = btn.value;
+        fetch(`/api/teams/${teamId}`, {method: 'PUT'})
+            .then(response => {response.status===302?window.location.href = "/login":response.text()});
+        btn.replaceWith(document.createTextNode('Заявка отправлена'));
+    }));
+}
 initIdeasModal();
