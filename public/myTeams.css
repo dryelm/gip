@@ -462,7 +462,15 @@ header {
     position: relative;
 }
 
-
+.requests-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Center the modal vertically and horizontally */
+    padding: 20px;
+    border: 1px solid #888;
+    width: fit-content;
+    border-radius: 10px; /* Add this line to make the corners rounded */
+    position: relative;
+}
 
 .close {
     color: #aaa;
