@@ -1,8 +1,8 @@
-const source = document.getElementById('template').innerHTML;
-const template = Handlebars.compile(source);
+const sendRequestBtns = document.querySelectorAll('.send');
 
-fetch('/api/teams')
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('teams').innerHTML = template({teams: data});
-    });
+sendRequestBtns.forEach(btn => btn.addEventListener('click', () => {
+    const teamId = btn.value;
+    fetch(`/api/teams/${teamId}`, {method: 'PUT'})
+        .then(response => {response.status===302? window.location.href = "/login":response.text()});
+    btn.replaceWith(document.createTextNode('Заявка отправлена'));
+}));
