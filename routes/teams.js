@@ -58,12 +58,15 @@ router.get('/:ideasId', async (req, res) => {
         return;
     }
     try {
-        // Get the ideasId from the request parameters
         const ideasId = req.params.ideasId;
-
-        // Find all teams with the specified idea
-        const teams = await Teams.find({ idea: ideasId, members: { $nin: [req.user.username] }});
-
+        let teams = await Teams.find({ idea: ideasId});
+        teams = teams.filter(team => !team.members.includes(req.user.username));
+        teams.forEach(team => {
+            team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
+        });
+        teams.forEach(team => {
+            team.maySendApplication  = !(team.applications.includes(req.user.username));
+        });
         res.render('teamsList.hbs', { teams });
 
     } catch (err) {

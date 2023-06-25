@@ -1,0 +1,29 @@
+.requests td{
+    border-top: 1px gray solid;
+}
+
+.request-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.request-buttons button {
+    margin: 5px;
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    color: #ffffff;
+    border: none;
+}
+
+.request-buttons .accept {
+    background-color: #40BB15;
+    cursor: pointer;
+}
+
+.request-buttons .reject {
+    background-color: #F11C1C;
+    cursor: pointer;
+}

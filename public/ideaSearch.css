@@ -327,8 +327,7 @@ header {
     margin: 15% auto; /* Center the modal vertically and horizontally */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    width: fit-content;
     border-radius: 10px; /* Add this line to make the corners rounded */
     position: relative;
 }

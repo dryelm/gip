@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
         return;
     }
     try {
-        const teams = await Teams.find();
+        const teams = await Teams.find({ members: req.user.username });
         teams.forEach(team => {
             team.isOwner = (team.owner === req.user.username);
         });

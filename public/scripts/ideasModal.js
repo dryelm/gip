@@ -60,7 +60,7 @@ function initIdeasModal() {
                 })
                 .then(teamsListHtml => {
                     // Update the teams modal window's content with the list of teams
-                    teamsModal.querySelector('.modal-content .teams').innerHTML = teamsListHtml;
+                    teamsModal.querySelector('.modal-info-content').innerHTML = teamsListHtml;
 
                     // Display the teams modal window
                     teamsModal.style.display = "block";

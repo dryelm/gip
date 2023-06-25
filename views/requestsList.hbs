@@ -9,10 +9,32 @@
 </head>
 <body>
 <h3>Заявки</h3>
-{{#each requests}}
-    {{username}}
-    {{telegram}}
-    {{skills}}
-    {{description}}
-{{/each}}
+<table class="requests">
+    <tr>
+        <th>Логин</th>
+        <th>Почта</th>
+        <th>Телеграм</th>
+        <th>Навыки</th>
+        <th></th>
+    </tr>
+    {{#each requests}}
+        <tr class="member-info">
+            <td class="member-username" id="username">{{username}}</td>
+            <td class="member-email" id="email">{{email}}</td>
+            <td class="member-telegram" id="telegram">{{telegram}}</td>
+            <td class="member-skills">
+                {{#each skills}}
+                    <ul>
+                        {{this}}
+                    </ul>
+                {{/each}}
+            </td>
+            <td class="member-about" id="about"></td>
+            <td class="request-buttons">
+                <button class="accept" value="">Принять</button>
+                <button class="reject" value="">Отклонить</button>
+            </td>
+        </tr>
+    {{/each}}
+</table>
 </body>
