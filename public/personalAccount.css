@@ -194,3 +194,19 @@ input, textarea {
     background-color: #0056b3;
 }
 
+footer {
+    background-color: #252B42;
+    color: #fff;
+    padding: 20px 50px;
+    text-align: center;
+}
+
+.logout-button {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

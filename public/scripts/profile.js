@@ -358,3 +358,9 @@ for (let i = 0; i < editButtonsAboutMe.length; i++) {
         makeEditableAboutMe(field);
     });
 }
+
+const logoutButton = document.querySelector('.logout-button');
+logoutButton.addEventListener('click', async function () {
+    await fetch('/logout', {method: 'POST' });
+    window.location.href = '/ideas';
+});
