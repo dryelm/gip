@@ -44,7 +44,7 @@
             </form>
         </div>
 
-        <h3 class="skills-text">Навыки</h3>
+        <h4 class="skills-header">Навыки</h4>
         <div class="sidebar-block skills">
             <div class="skills-list" id="skills-list">
                 <ul>
@@ -63,9 +63,9 @@
             </div>
         </div>
 
+        <h4 class="count-filter-header">Количество людей в команде</h4>
         <div class="count-filter">
             <div class="wrapper">
-                <label>Количество людей в команде</label>
                 <div class="values">
                     <span id="range1">0</span>
                     <span> &dash; </span>
@@ -76,8 +76,6 @@
                     <input type="range" min="0" max="5" value="0" id="slider-1" oninput="slideOne()">
                     <input type="range" min="0" max="5" value="5" id="slider-2" oninput="slideTwo()">
                 </div>
-                <input type="number">
-                <input type="number">
             </div>
         </div>
 
@@ -104,7 +102,9 @@
                             </ul>
                         </td>
                         <td rowspan="2" class="team-buttons" width="15%">
-                            <button class="send">✓ Отправить заявку</button>
+                            {{#if maySendApplication}}
+                            <button class="send" value = {{_id}}>✓ Отправить заявку</button>
+                            {{/if}}
                             <button class="full-info" value="{{_id}}">Подробнее</button>
                         </td>
                     </tr>
@@ -140,6 +140,7 @@
         </div>
     </div>
     <script src="/scripts/fullInfoTeamModal.js"></script>
+    <script src="/scripts/sendApplication.js"></script>
 </div>
 
 </body>

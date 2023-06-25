@@ -30,8 +30,10 @@ const teamsSchema = new mongoose.Schema({
     },
     maxCountMembers:{
         type: Number
+    },
+    applications:{
+        type: [String]
     }
-
 });
 
 module.exports = mongoose.model('Team', teamsSchema);

@@ -153,7 +153,7 @@ header {
     border-bottom: 1px solid gray;
 }
 
-.skills-text {
+.skills-header {
     font-size: 16px;
 }
 
@@ -370,7 +370,8 @@ header {
 }
 
 .team {
-    border: solid gray 1px;
+    border: 1px solid gray;
+    border-radius: 5px;
     margin-top: 1%;
     margin-bottom: 1%;
     width: 95%;
@@ -438,7 +439,7 @@ header {
 
 .teams {
     position: absolute;
-    left: 19%;
+    left: 5%;
     top: 10%;
 }
 

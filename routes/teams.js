@@ -4,10 +4,14 @@ const router = express.Router();
 const Teams = require('../models/TeamsDB');
 const Ideas = require("../models/IdeasDB");
 const SkillsDB = require("../models/SkillsDB");
+const {isAuthenticated} = require("passport/lib/http/request");
 
 router.get('/', async (req, res) => {
     try {
-        const teams = await Teams.find()
+        let teams = await Teams.find();
+        if(isAuthenticated()){
+            teams = teams.filter(team => !team.members.includes(req.user.username));
+        }
         const skills = await SkillsDB.aggregate([
             {
                 $lookup: {
@@ -30,6 +34,16 @@ router.get('/', async (req, res) => {
         teams.forEach(team => {
             team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
         });
+        if(!req.isAuthenticated()) {
+            teams.forEach(team => {
+                team.maySendApplication  = true;
+            });
+        }
+        else {
+            teams.forEach(team => {
+                team.maySendApplication  = !(team.applications.includes(req.user.username));
+            });
+        }
 
         res.render('TeamSearch/teamSearch.hbs', {"skills-search": skills.filter(elem => elem["count"] !== 0), "teams": teams});
     } catch (err) {
@@ -44,7 +58,7 @@ router.get('/:ideasId', async (req, res) => {
         const ideasId = req.params.ideasId;
 
         // Find all teams with the specified idea
-        const teams = await Teams.find({ idea: ideasId });
+        const teams = await Teams.find({ idea: ideasId, members: { $nin: [req.user.username] }});
 
         // Check if there are any teams
         if (teams.length === 0) {
