@@ -70,7 +70,22 @@ router.put('/:teamId', async (req, res) => {
     }
 });
 
-router.delete('/:teamId/requests/:username', async (req, res) => {
+router.delete('/:teamId/requests/accept/:username', async (req, res) => {
+    try {
+        const { teamId, username } = req.params;
+        const team = await Team.findById(teamId);
+        if (!team) {
+            return res.status(404).json({ message: 'Команда не найдена' });
+        }
+        team.applications = team.applications.filter(user => user !== username);
+        team.members.push(username);
+        await team.save();
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+router.delete('/:teamId/requests/decline/:username', async (req, res) => {
     try {
         const { teamId, username } = req.params;
         const team = await Team.findById(teamId);
@@ -79,7 +94,6 @@ router.delete('/:teamId/requests/:username', async (req, res) => {
         }
         team.applications = team.applications.filter(user => user !== username);
         await team.save();
-        res.json({ message: 'Заявка успешно удалена' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
