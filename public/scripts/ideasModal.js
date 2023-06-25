@@ -39,7 +39,7 @@ function initIdeasModal() {
 
     // Add an event listener to each "Find team" button
     findButtons.forEach((button) => {
-        button.addEventListener('click', (event) => {
+        button.addEventListener('click', async function (event) {
             // Prevent the default action
             event.preventDefault();
 
@@ -47,14 +47,21 @@ function initIdeasModal() {
             const ideasId = event.target.closest('.idea-buttons').querySelector('.create').value;
 
             // Make an AJAX request to the server to get the list of teams for the idea
-            fetch(`/teams/${ideasId}`)
-                .then(response => response.text())
+            await fetch(`/teams/${ideasId}`)
+                .then(response => {
+                    if (response.status !== 200){
+                        throw new Error(response.status);
+                    }
+                    return response.text();
+                })
                 .then(teamsListHtml => {
                     // Update the teams modal window's content with the list of teams
-                    teamsModal.querySelector('.modal-content').innerHTML = teamsListHtml;
+                    teamsModal.querySelector('.modal-content .teams').innerHTML = teamsListHtml;
 
                     // Display the teams modal window
                     teamsModal.style.display = "block";
+                }).catch(function (err) {
+                    window.location.href = '/login';
                 });
         });
     });
