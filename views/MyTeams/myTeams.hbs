@@ -55,6 +55,15 @@
                                 <button class="view-requests" value="{{_id}}">Заявки</button>
                             {{/if}}
                                 <button class="full-info" value="{{_id}}">Подробнее</button>
+                            {{#if isOwner}}
+                                <button class="delete-team" value="{{_id}}">Удалить</button>
+                            {{/if}}
+                            {{#if isOwner}}
+                                <button class="complete-team" value="{{_id}}">Завершить</button>
+                            {{/if}}
+                            {{#unless isOwner}}
+                                <button class="leave-team" value="{{_id}}">Выйти из команды</button>
+                            {{/unless}}
                         </td>
                     </tr>
                     <tr>
@@ -102,4 +111,5 @@
 </div>
 </body>
 <script src="/scripts/searchTeams.js"></script>
+<script src="/scripts/myTeamsManageButtons.js"></script>
 </html>

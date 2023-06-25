@@ -33,6 +33,11 @@ const teamsSchema = new mongoose.Schema({
     },
     applications:{
         type: [String]
+    },
+    isActive: {
+        type: Boolean,
+        default: true,
+        required: true
     }
 });
 

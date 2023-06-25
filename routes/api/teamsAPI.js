@@ -6,6 +6,36 @@ const { Types } = require('mongoose');
 const path = require("path");
 
 
+router.delete("/delete/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        await Teams.findByIdAndDelete(id);
+        res.status(200).json({ message: "Team deleted" });
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
+router.put("/complete/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const team = await Teams.findById(id, { isActive: false });
+        const promise = team.members.map(async (member) => {
+            const user = await Users.findOne({username: member});
+            user.currentProjects = user.currentProjects.filter(teamId => teamId.toString() !== id);
+            user.finishedProjects.push(id);
+            await user.save();
+        });
+        await Promise.all(promise);
+        team.isActive = false;
+        await team.save();
+
+        res.status(200).json({ message: "Complete!" });
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
 router.get('/', async (req, res) => {
     const teams = await Teams.find();
     await res.json(teams);
@@ -80,7 +110,10 @@ router.delete('/:teamId/requests/accept/:username', async (req, res) => {
         }
         team.applications = team.applications.filter(user => user !== username);
         team.members.push(username);
+        const user = Users.findOne({ username: username });
+        user.currentProjects.push(teamId);
         await team.save();
+        await user.save();
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

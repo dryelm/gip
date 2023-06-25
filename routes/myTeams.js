@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
         teams.forEach(team => {
             team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
         });
-        res.render('MyTeams/myTeams.hbs', {"teams": teams});
+
+        res.render('MyTeams/myTeams.hbs', {"teams": teams.filter(team => team.isActive)});
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
     }

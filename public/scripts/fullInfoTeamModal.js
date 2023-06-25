@@ -9,7 +9,7 @@ infoButtons.forEach((button) => {
 
         const teamId = event.target.value;
 
-        await fetch(`api/teams/${teamId}`)
+        await fetch(`/api/teams/${teamId}`)
             .then(response => response.json())
             .then(teamInfo => {
                 const teamName = teamInfo.name;

@@ -3,7 +3,7 @@ const path = require("path");
 const router = express.Router();
 const Teams = require('../models/TeamsDB');
 const Ideas = require("../models/IdeasDB");
-const SkillsDB = require("../models/SkillsDB");
+const Users = require("../models/UsersDB")
 
 
 router.get('/', async (req, res) => {
@@ -55,6 +55,7 @@ router.get('/:ideasId', async (req, res) => {
         const ideasId = req.params.ideasId;
         let teams = await Teams.find({ idea: ideasId});
         teams = teams.filter(team => !team.members.includes(req.user.username));
+        teams = teams.filter(team => team.isActive);
         teams.forEach(team => {
             team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
         });
@@ -88,6 +89,7 @@ router.post("/create", async (req, res) => {
     const username = req.session.passport.user.username;
     const idea_id =  req.body.ideas_id;
     const idea = await Ideas.findOne({_id: idea_id});
+
     const skills = idea.skills;
     const name = idea.name;
     const description = req.body.description;
@@ -107,7 +109,12 @@ router.post("/create", async (req, res) => {
         maxCountMembers: maxCountMembers
     });
 
-    await team.save();
+    await team.save().then(async function(obj){
+        const user = await Users.findOne({username: username});
+        user.currentProjects.push(obj._id)
+        await user.save();
+    });
+
     await res.redirect('/ideas');
 
 })

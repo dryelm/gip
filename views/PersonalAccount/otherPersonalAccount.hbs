@@ -51,13 +51,35 @@
     <div class="bottom-section">
         <div class="data-field">
             <label>Прошлые проекты</label>
-            <p>{{finishedProjects}}</p>
+            {{#each finishedProjects}}
+                <button class="full-info" value="{{_id}}">{{name}}</button>
+            {{/each}}
+
         </div>
         <div class="data-field">
-            <label>Текущие</label>
-            <p>{{currentProjects}}</p>
+            <label>Текущие проекты</label>
+            {{#each currentProjects}}
+                <button class="full-info" value="{{_id}}">{{name}}</button>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<div id="fullInfo-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="full-info-close">&times;</span>
+        <div class="modal-info-content">
+            <h3 id="team-name"></h3>
+            <label class="team-idea-description-header">Описание идеи</label>
+            <h5 id="team-idea-description"></h5>
+            <label class="team-description-header">Описание команды</label>
+            <h5 id="team-description"></h5>
+            <label id="team-owner"></label>
+            <label id="team-members"></label>
+            <label id="team-skills"></label>
+            <label id="free-slots"></label>
         </div>
     </div>
 </div>
 </body>
+<script src="/scripts/fullInfoTeamModal.js"></script>
 </html>
