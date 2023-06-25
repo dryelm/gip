@@ -53,6 +53,10 @@ router.get('/', async (req, res) => {
 
 
 router.get('/:ideasId', async (req, res) => {
+    if (!req.isAuthenticated()){
+        await res.status(401).json({message: "Unauthorized"});
+        return;
+    }
     try {
         // Get the ideasId from the request parameters
         const ideasId = req.params.ideasId;
@@ -60,16 +64,10 @@ router.get('/:ideasId', async (req, res) => {
         // Find all teams with the specified idea
         const teams = await Teams.find({ idea: ideasId, members: { $nin: [req.user.username] }});
 
-        // Check if there are any teams
-        if (teams.length === 0) {
-            // If there are no teams, render a message saying that there are no teams
-            res.render('noTeams.hbs');
-        } else {
-            // If there are teams, render the list of teams using Handlebars
-            res.render('teamsList.hbs', { teams });
-        }
+        res.render('teamsList.hbs', { teams });
+
     } catch (err) {
-        res.status(500).json({ message: "Server Error" });
+        res.render('noTeams.hbs');
     }
 });
 

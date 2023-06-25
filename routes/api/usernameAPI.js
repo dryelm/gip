@@ -9,6 +9,6 @@ router.get('/', async (req, res) => {
         return;
     }
 
-    await res.json({username: req.session.passport.user.username});
+    await res.status(200).json({username: req.session.passport.user.username});
 });
 module.exports = router;
