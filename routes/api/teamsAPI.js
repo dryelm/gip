@@ -70,7 +70,7 @@ router.put('/:teamId', async (req, res) => {
     }
 });
 
-router.delete('/:teamId/:username', async (req, res) => {
+router.delete('/:teamId/requests/:username', async (req, res) => {
     try {
         const { teamId, username } = req.params;
         const team = await Team.findById(teamId);
@@ -85,6 +85,25 @@ router.delete('/:teamId/:username', async (req, res) => {
     }
 });
 
+// server.js (or wherever you define your routes)
+router.get('/:teamId/requests', async (req, res) => {
+    try {
+        const teamId = req.params.teamId;
+
+        // get requests for the specified team from the database
+        const team = await Teams.findById(teamId);
+        const requests = team.applications;
+        if(requests.length === 0) {
+            res.render('noRequests.hbs');
+        }
+        else {
+            // render the list of requests using Handlebars
+            res.render('requestsList.hbs', { requests });
+        }
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+});
 
 
 module.exports = router;

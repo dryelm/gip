@@ -52,7 +52,7 @@
                         </td>
                         <td rowspan="2" class="team-buttons" width="15%">
                             {{#if isOwner}}
-                                <button class="view-requests">Заявки</button>
+                                <button class="view-requests" value={{_id}}>Заявки</button>
                             {{/if}}
                             <button class="full-info">Подробнее</button>
                         </td>
@@ -72,7 +72,14 @@
             {{/each}}
         </ul>
     </div>
+    <div id="requests-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+        </div>
+    </div>
+
 </div>
 </body>
+<script src="/scripts/viewRequests.js"></script>
 <script src="/scripts/searchTeams.js"></script>
 </html>
