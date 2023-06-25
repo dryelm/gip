@@ -105,6 +105,14 @@
                         <td rowspan="2" class="team-buttons" width="15%">
                             {{#if maySendApplication}}
                                 <button class="send" value= {{_id}}>✓ Отправить заявку</button>
+                                <script>
+                                    document.querySelector('.team-buttons .send').addEventListener('click', function() {
+                                        this.innerHTML = 'Заявка отправлена';
+                                    });
+                                    document.querySelector('.team-buttons .send').addEventListener('click', function() {
+                                        this.style.backgroundColor = '#838383';
+                                    });
+                                </script>
                             {{/if}}
                             <button class="full-info" value="{{_id}}">Подробнее</button>
                         </td>

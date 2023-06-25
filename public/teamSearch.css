@@ -358,6 +358,10 @@ header {
     cursor: pointer;
 }
 
+.apply button:hover {
+    background-color: #1E90FF;
+}
+
 .team {
     border: 1px solid gray;
     border-radius: 5px;
@@ -417,10 +421,21 @@ header {
     cursor: pointer;
 }
 
+.team-buttons .send:hover {
+    background-color: #3a9d13;
+    cursor: pointer;
+}
+
 .team-buttons .full-info {
     background-color: #23A6F0;
     cursor: pointer;
 }
+
+.team-buttons .full-info:hover {
+    background-color: #1f8cc7;
+    cursor: pointer;
+}
+
 .teams {
     position: absolute;
     left: 19%;

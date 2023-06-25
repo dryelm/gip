@@ -426,9 +426,35 @@ header {
     cursor: pointer;
 }
 
-.team-buttons .full-info {
+.team-buttons .view-requests:hover {
+    background-color: #3a9d13;
+}
+
+.team-buttons .complete-team {
     background-color: #23A6F0;
     cursor: pointer;
+}
+
+.team-buttons .complete-team:hover {
+    background-color: #1f8cc7;
+}
+
+.team-buttons .full-info {
+    background-color: #838383;
+    cursor: pointer;
+}
+
+.team-buttons .full-info:hover {
+    background-color: #6e6e6e;
+}
+
+.team-buttons .delete-team {
+    background-color: #da0000;
+    cursor: pointer;
+}
+
+.team-buttons .delete-team:hover {
+    background-color: #b80000;
 }
 
 .teams {

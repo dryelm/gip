@@ -16,6 +16,7 @@ h2 {
 }
 
 #search {
+    font-family: 'Montserrat', sans-serif;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -61,6 +62,7 @@ h2 {
 }
 
 #apply button {
+    font-family: 'Montserrat', sans-serif;
     padding: 10px 20px;
     background-color: #003cff;
     color:white;
