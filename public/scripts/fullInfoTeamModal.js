@@ -31,9 +31,9 @@ infoButtons.forEach((button) => {
                 modalWindow.querySelector('#team-name').innerText = teamName;
                 modalWindow.querySelector('#team-idea-description').innerText = ideaDescription;
                 modalWindow.querySelector('#team-description').innerText = teamDescription;
-                modalWindow.querySelector('#team-owner').innerText = `Создатель: ${owner}`;
-                modalWindow.querySelector('#team-members').innerText = `Участники: ${teamMembers.join(', ')}`;
-                modalWindow.querySelector('#team-skills').innerText = `Навыки: ${teamSkills.join(', ')}`;
+                modalWindow.querySelector('#team-owner').innerText = owner;
+                modalWindow.querySelector('#team-members').innerText = teamMembers.join(', ');
+                modalWindow.querySelector('#team-skills').innerText = teamSkills.join(', ');
                 modalWindow.querySelector('#free-slots').innerText = freeSlotsText;
 
                 modalWindow.style.display = 'block';
