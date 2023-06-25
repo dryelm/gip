@@ -41,8 +41,6 @@ header {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
 
 }
 
