@@ -11,7 +11,7 @@ router.get('/', async function (req, res) {
         return;
     }
     if (error === 'user_not_found') {
-        res.render('login.hbs', {error: 'Пользователь не найден'});
+        res.render('login.hbs', {error: 'Ошибка входа: неверный логин или пароль'});
         return;
     }
 

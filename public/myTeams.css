@@ -371,16 +371,29 @@ header {
 }
 
 .team {
-    border: 1px solid gray;
-    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-left: 10%;
     margin-top: 1%;
     margin-bottom: 1%;
-    width: 95%;
+    width: 80%;
     padding: 1%;
 }
 
 .team-name {
     margin-bottom: 1%;
+}
+.team-description {
+    font-size: 120%;
+    font-weight: normal;
+}
+.skill {
+    font-weight: inherit;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 1%;
+    width: 20%;
+    text-align: center;
 }
 
 .members-count {
@@ -424,31 +437,33 @@ header {
     border: none;
 }
 
-.team-buttons .view-requests {
+.team-buttons .complete-team {
     background-color: #40BB15;
     cursor: pointer;
 }
 
-.team-buttons .view-requests:hover {
+.team-buttons .complete-team:hover {
     background-color: #3a9d13;
 }
 
-.team-buttons .complete-team {
+.team-buttons .view-requests {
     background-color: #23A6F0;
     cursor: pointer;
 }
 
-.team-buttons .complete-team:hover {
+.team-buttons .view-requests:hover {
     background-color: #1f8cc7;
 }
 
 .team-buttons .full-info {
-    background-color: #838383;
+    color: #333333;
+    background-color: white;
     cursor: pointer;
+    border: 1px solid #252525;
 }
 
 .team-buttons .full-info:hover {
-    background-color: #6e6e6e;
+    background-color: #e6e6e6;
 }
 
 .team-buttons .delete-team {

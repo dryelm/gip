@@ -35,6 +35,7 @@
             </div>
         </div>
     </header>
+
     <aside class="sidebar">
         <div class="sidebar-block filter">
             <h3 class=team-filter-text>Фильтр команд</h3>
@@ -62,7 +63,6 @@
                 </ul>
             </div>
         </div>
-
         <h4 class="count-filter-header">Количество людей в команде</h4>
         <div class="count-filter">
             <div class="wrapper">
@@ -78,9 +78,8 @@
                 </div>
             </div>
         </div>
-
         <div class="sidebar-block apply">
-            <button>Применить</button>
+            <button class="apply-button">Применить</button>
         </div>
     </aside>
     <script src="/scripts/teamsFilter.js"></script>
@@ -105,10 +104,10 @@
                             {{#if maySendApplication}}
                                 <button class="send" value= {{_id}}>✓ Отправить заявку</button>
                                 <script>
-                                    document.querySelector('.team-buttons .send').addEventListener('click', function() {
+                                    document.querySelector('.send').addEventListener('click', function() {
                                         this.innerHTML = 'Заявка отправлена';
                                     });
-                                    document.querySelector('.team-buttons .send').addEventListener('click', function() {
+                                    document.querySelector('.send').addEventListener('click', function() {
                                         this.style.backgroundColor = '#838383';
                                     });
                                 </script>

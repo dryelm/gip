@@ -12,7 +12,7 @@ body {
     background: white;
 }
 
-/* Header Styling */
+
 header {
     display: flex;
     align-items: center;
@@ -81,7 +81,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    position: relative; /* added position */
+    position: relative;
 }
 
 .search input[type="text"] {
@@ -128,6 +128,7 @@ header {
 }
 
 .sidebar {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -137,7 +138,7 @@ header {
     top: 0;
     left: 1%;
     margin-top: 6%;
-    height: 80%;
+    height: 90%;
     width: 17%;
     padding: 15px;
     background-color: #f5f5f5;
@@ -183,6 +184,7 @@ header {
     color: #fff;
     cursor: pointer;
 }
+
 .skills li {
     display: flex;
     align-items: center;
@@ -222,7 +224,7 @@ header {
 
 
 .sidebar-block.skills {
-    height: 300px;
+    height: 20%;
     margin-top: 5%;
 }
 
@@ -239,6 +241,7 @@ header {
 }
 
 .count-filter {
+    margin-left: 1%;
     border: 1px solid gray;
     border-radius: 5px;
     margin-top: 5%;
@@ -249,14 +252,16 @@ header {
 }
 
 .count-filter .wrapper {
+    overflow: hidden;
+    margin-left: 17%;
     position: relative;
-    width: 95vmin;
+    width: 100vmin;
 }
 
 .count-filter .container {
     position: relative;
-    width: 30%;
-    height: 100px;
+    width: 20%;
+    height: 50px;
 }
 
 .count-filter .slider-track{
@@ -273,7 +278,7 @@ header {
 .count-filter .values{
     background-color: #23A6F0;
     width: 10%;
-    margin-left: 9%;
+    margin-left: 5%;
     margin-top: 1%;
     border-radius: 5px;
     text-align: center;
@@ -369,6 +374,7 @@ header {
     background-color: #23A6F0;
     color: #fff;
     cursor: pointer;
+    margin-bottom: 7%;
 }
 
 .apply button:hover {
@@ -514,5 +520,3 @@ header {
     margin-bottom: 1%;
     display: flex;
 }
-
-
