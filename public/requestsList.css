@@ -23,7 +23,15 @@
     cursor: pointer;
 }
 
+.request-buttons .accept:hover {
+    background-color: #2E9E0F;
+}
+
 .request-buttons .reject {
     background-color: #F11C1C;
     cursor: pointer;
+}
+
+.request-buttons .reject:hover {
+    background-color: #C61717;
 }

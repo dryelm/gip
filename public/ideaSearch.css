@@ -260,6 +260,10 @@ header {
     cursor: pointer;
 }
 
+.apply button:hover {
+    background-color: #1f8cc7;
+}
+
 .idea {
     border: 1px solid gray;
     border-radius: 5px;
@@ -302,8 +306,18 @@ header {
     cursor: pointer;
 }
 
+.idea-buttons .create:hover {
+    background-color: #3a9d13;
+    cursor: pointer;
+}
+
 .idea-buttons .find {
     background-color: #23A6F0;
+    cursor: pointer;
+}
+
+.idea-buttons .find:hover {
+    background-color: #1f8cc7;
     cursor: pointer;
 }
 
