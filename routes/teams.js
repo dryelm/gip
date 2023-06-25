@@ -12,25 +12,7 @@ router.get('/', async (req, res) => {
         if(req.isAuthenticated()){
             teams = teams.filter(team => !team.members.includes(req.user.username));
         }
-        const skills = await SkillsDB.aggregate([
-            {
-                $lookup: {
-                    from: 'teams',
-                    let: { skillName: '$name' },
-                    pipeline: [
-                        { $unwind: '$skills' },
-                        { $match: { $expr: { $eq: ['$skills', '$$skillName'] } } },
-                        { $group: { _id: '$skills', count: { $sum: 1 } } }
-                    ],
-                    as: 'count'
-                }
-            },
-            {
-                $addFields: {
-                    count: { $ifNull: [{ $arrayElemAt: ['$count.count', 0] }, 0] }
-                }
-            }
-        ])
+
         teams.forEach(team => {
             team.emptyCirclesArray = new Array(team.maxCountMembers - team.members.length).fill(0);
         });
@@ -44,8 +26,20 @@ router.get('/', async (req, res) => {
                 team.maySendApplication  = !(team.applications.includes(req.user.username));
             });
         }
+        const skills = teams.map(team => team.skills).flat();
 
-        res.render('TeamSearch/teamSearch.hbs', {"skills-search": skills.filter(elem => elem["count"] !== 0), "teams": teams});
+        const skillCounts = skills.reduce((acc, skill) => {
+            const existingSkill = acc.find(s => s.name === skill);
+            if (existingSkill) {
+                existingSkill.count++;
+            } else {
+                acc.push({ name: skill, count: 1 });
+            }
+            return acc;
+        }, []);
+
+
+        res.render('TeamSearch/teamSearch.hbs', {"skills-search": skillCounts, "teams": teams});
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
     }
