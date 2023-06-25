@@ -219,3 +219,7 @@ footer {
 .logout-button:hover {
     background-color: #da0000;
 }
+
+textarea{
+    resize: vertical;
+}
