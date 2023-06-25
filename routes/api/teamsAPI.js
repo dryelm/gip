@@ -109,6 +109,30 @@ router.put('/:teamId', async (req, res) => {
     }
 });
 
+router.delete("/:teamId/leave", async (req, res) => {
+    if (!req.isAuthenticated()){
+        await res.redirect(302, '/login');
+        return;
+    }
+    const teamId = req.params.teamId;
+    const username = req.user.username;
+    try {
+        const team = await Teams.findById(teamId);
+        if (!team) {
+            return res.status(404).json({ message: 'Команда не найдена' });
+        }
+        team.members = team.members.filter(user => user !== username);
+
+        const user = await Users.findOne({ username: username });
+        user.currentProjects = user.currentProjects.filter(teamId => teamId.toString() !== teamId);
+        await user.save();
+        await team.save();
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+
+});
 router.delete('/:teamId/requests/accept/:username', async (req, res) => {
     try {
         const { teamId, username } = req.params;
@@ -117,8 +141,15 @@ router.delete('/:teamId/requests/accept/:username', async (req, res) => {
             return res.status(404).json({ message: 'Команда не найдена' });
         }
         team.applications = team.applications.filter(user => user !== username);
+        if (team.members.includes(username)) {
+            return res.status(400).json({ message: 'Пользователь уже в команде' });
+        }
+
+        if (team.members.length >= team.maxMembers) {
+            return res.status(400).json({ message: 'Команда уже заполнена' });
+        }
         team.members.push(username);
-        const user = Users.findOne({ username: username });
+        const user = await Users.findOne({ username: username });
         user.currentProjects.push(teamId);
         await team.save();
         await user.save();

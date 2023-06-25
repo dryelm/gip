@@ -1,5 +1,6 @@
 const deleteTeamButton = document.querySelectorAll('.delete-team');
 const completeTeamButton = document.querySelectorAll('.complete-team');
+const leaveTeamButton = document.querySelectorAll('.leave-team');
 
 deleteTeamButton.forEach(button => {
     button.addEventListener('click', async function (event) {
@@ -25,6 +26,25 @@ completeTeamButton.forEach(button => {
         event.preventDefault();
         const teamId = event.target.value;
         await fetch(`/api/teams/complete/${teamId}`, {method: 'PUT'})
+            .then(response => {
+                if (response.status !== 200){
+                    throw new Error(response.status);
+                }
+                return response.text();
+            })
+            .then(() => {
+                window.location.href = '/myteams';
+            }).catch(function (err) {
+                console.log(err)
+            });
+    });
+});
+
+leaveTeamButton.forEach(button => {
+    button.addEventListener('click', async function (event) {
+        event.preventDefault();
+        const teamId = event.target.value;
+        await fetch(`/api/teams/${teamId}/leave/`, {method: 'PUT'})
             .then(response => {
                 if (response.status !== 200){
                     throw new Error(response.status);
