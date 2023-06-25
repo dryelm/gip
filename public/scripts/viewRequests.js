@@ -1,6 +1,7 @@
 const viewRequestsButtons = document.querySelectorAll('.view-requests');
+const modal = document.querySelectorAll('.modal');
 const requestsModal = document.querySelector('#requests-modal');
-const closeModalButton = document.querySelector('.close');
+const closeModalButton = document.querySelectorAll('.close');
 
 viewRequestsButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -19,6 +20,6 @@ viewRequestsButtons.forEach(button => {
     });
 });
 
-closeModalButton.addEventListener('click', () => {
-    requestsModal.style.display = 'none';
-});
+closeModalButton.forEach(btn => btn.addEventListener('click', () => {
+    modal.forEach(m => m.style.display = 'none');
+}));

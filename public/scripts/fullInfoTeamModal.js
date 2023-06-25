@@ -1,5 +1,5 @@
 const modalWindow = document.querySelector('#fullInfo-modal');
-const createSpan = document.getElementsByClassName('close')[0];
+const createSpan = document.querySelector("#full-info-close");
 
 const infoButtons = document.querySelectorAll('.full-info');
 
