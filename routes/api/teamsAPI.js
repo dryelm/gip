@@ -187,7 +187,7 @@ router.get('/:teamId/requests', async (req, res) => {
             res.render('noRequests.hbs');
         }
         else {
-            
+
             await res.render('requestsList.hbs', { requests: userInfos, teamId: teamId });
         }
     } catch (err) {
