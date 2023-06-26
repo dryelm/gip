@@ -65,7 +65,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    position: relative; /* added position */
+    position: relative;
 }
 
 .search input[type="text"] {
@@ -74,9 +74,9 @@ header {
     border-radius: 0;
     padding: 10px;
     font-size: 16px;
-    width: 500px; /* adjust as needed */
+    width: 500px;
     height: 50px;
-    margin-right: 0; /* adjust as needed */
+    margin-right: 0;
 }
 
 .search button {
@@ -87,8 +87,8 @@ header {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    padding: 0; /* remove padding */
-    margin: 0; /* remove margins */
+    padding: 0;
+    margin: 0;
 }
 
 .search input[type="text"]:focus {
@@ -171,7 +171,7 @@ header {
 }
 
 .skills-list {
-    overflow-y: scroll; /* Add scrollable content */
+    overflow-y: scroll;
 }
 
 .skills label {
@@ -191,73 +191,3 @@ header {
     color: #fff;
     cursor: pointer;
 }
-
-@media (max-width: 767px) {
-    .sidebar {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 300px;
-        padding: 20px;
-        background-color: #f5f5f5;
-        z-index: 1;
-    }
-    .sidebar.active {
-        display: block;
-    }
-}
-
-
-/* Responsive Styling */
-@media screen and (max-width: 768px) {
-    header {
-        padding: 10px 20px;
-    }
-
-    .nav li {
-        margin-right: 20px;
-    }
-
-    .search input[type="text"] {
-        width: 150px;
-    }
-
-    .search button {
-        margin-left: -30px;
-        padding: 8px;
-    }
-
-    .fa-search {
-        font-size: 14px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .logo img {
-        height: 40px;
-        margin-right: 20px;
-    }
-
-    .nav li {
-        margin-right: 10px;
-    }
-
-    .search input[type="text"] {
-        width: 100px;
-    }
-
-    .search button {
-        margin-left: -20px;
-        padding: 6px;
-    }
-
-    .fa-search {
-        font-size: 12px;
-    }
-}
-
-
