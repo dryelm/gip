@@ -17,5 +17,3 @@ searchFormHeader.addEventListener('submit', (event) => {
         }
     });
 });
-
-console.log("Hello from searchIdeas.js");
