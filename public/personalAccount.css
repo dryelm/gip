@@ -17,7 +17,7 @@ body {
     border-radius: 10px;
 }
 .modal {
-    display: none; /* Hide the modal by default */
+    display: none;
     position: fixed;
     z-index: 100;
     cursor: pointer;
