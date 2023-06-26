@@ -4,7 +4,6 @@ const User = require('../models/UsersDB');
 
 
 
-// Получение данных пользователя
 router.get('/', async (req, res, next) => {
     try {
         const user = await User.findOne({username: req.session.passport.user.username}, {password: 0});
@@ -17,7 +16,6 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-// Обновление данных пользователя
 router.post('/', async (req, res, next) => {
     try {
         const user = await User.findById(req.session.userId);

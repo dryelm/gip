@@ -39,10 +39,8 @@ router.post('/', async (req, res) => {
     const email = req.body.email
     const password = req.body.password;
 
-    // Шифрование пароля
     const hashedPassword = await hashPassword(password);
 
-    // проверка на валидность данных
     if (!username || !email || !password) {
         await res.redirect('/register?error=empty_data');
         return;
@@ -63,7 +61,6 @@ router.post('/', async (req, res) => {
         return;
     }
 
-    // Добавление нового пользователя в базу данных
     try {
         const isExist = await UsersDB.findOne({$or: [{username: username}, {email: email}]});
         if (isExist) {
@@ -75,7 +72,6 @@ router.post('/', async (req, res) => {
 
 
     } catch (err) {
-        // Обработка ошибок при добавлении пользователя в базу данных
         console.error(err);
         await res.redirect('/');
     }

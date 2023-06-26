@@ -6,7 +6,7 @@ const Skills = require("../models/SkillsDB");
 const Ideas = require("../models/IdeasDB");
 const SkillsDB = require("../models/SkillsDB");
 
-// Получение списка проектов
+
 router.get('/', async (req, res) => {
     try {
         const ideas = await Ideas.find({public : true}, {public: 0});
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Создание нового проекта
+
 router.post('/', async (req, res) => {
     const project = new Ideas({
         name: req.body.name,
@@ -123,12 +123,12 @@ router.post('/create', async (req, res) =>
 });
 
 
-// Получение информации о проекте по ID
+
 router.get('/id/:id', getProject, (req, res) => {
     res.json(res.project);
 });
 
-// Обновление информации о проекте по ID
+
 router.patch('/id/:id', getProject, async (req, res) => {
     if (req.body.name != null) {
         res.project.name = req.body.name;
@@ -150,7 +150,7 @@ router.patch('/id/:id', getProject, async (req, res) => {
     }
 });
 
-// Удаление проекта по ID
+
 router.delete('/id/:id', getProject, async (req, res) => {
     try {
         await res.project.remove();
@@ -161,7 +161,7 @@ router.delete('/id/:id', getProject, async (req, res) => {
 });
 
 
-// Middleware для получения информации о проекте по ID
+
 async function getProject(req, res, next) {
     let project;
     try {

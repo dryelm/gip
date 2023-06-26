@@ -36,7 +36,6 @@ router.get('/user/:username', async function (req, res) {
         await res.render('PersonalAccount/otherPersonalAccount.hbs', user);
     }
 
-    // res.render('PersonalAccount/personalAccount', {user: user});
 });
 
 router.get('/edit', async function (req, res) {
