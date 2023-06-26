@@ -172,12 +172,11 @@ router.delete('/:teamId/requests/decline/:username', async (req, res) => {
     }
 });
 
-// server.js (or wherever you define your routes)
 router.get('/:teamId/requests', async (req, res) => {
     try {
         const teamId = req.params.teamId;
 
-        // get requests for the specified team from the database
+
         const team = await Teams.findById(teamId);
         const requests = team.applications;
         const promises = await requests.map(async username => {
@@ -189,7 +188,6 @@ router.get('/:teamId/requests', async (req, res) => {
         }
         else {
 
-            // render the list of requests using Handlebars
             await res.render('requestsList.hbs', { requests: userInfos, teamId: teamId });
         }
     } catch (err) {

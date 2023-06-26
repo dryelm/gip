@@ -23,7 +23,6 @@ router.put('/:username', async (req, res) => {
             return;
         }
 
-        // Обновление информации о пользователе
         user.email = req.body.email || user.email;
         user.telegram = req.body.telegram || user.telegram;
         user.about = req.body.about || user.about;
@@ -37,7 +36,7 @@ router.put('/:username', async (req, res) => {
             await res.status(400).json({message: "Invalid telegram"});
             return;
         }
-        // Обновление навыков пользователя
+
         if (req.body.skills) {
             const skills = await Promise.all(req.body.skills.map(skill => Skills.findOne({ name: skill })));
             if (skills.every(skill => skill)) {
