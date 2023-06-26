@@ -5,16 +5,12 @@ const closeModalButton = document.querySelectorAll('.close');
 
 viewRequestsButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // get teamId from the data attribute
         const teamId = button.value;
 
         fetch(`/api/teams/${teamId}/requests`)
             .then(response => response.text())
             .then(requestsListHtml => {
-                // Update the requests modal window's content with the list of requests
                 requestsModal.querySelector('.modal-info-content').innerHTML = requestsListHtml;
-
-                // Display the requests modal window
                 requestsModal.style.display = 'block';
             }).then(addActions);
     });
@@ -33,15 +29,7 @@ function addActions() {
         const username = btn.value;
 
         fetch(`/api/teams/${teamId}/requests/accept/${username}`, {method: 'DELETE'})
-            .then(response => response.text())
-            .then(result => {
-                if (result === 'OK') {
-                    // Hide the request
-
-                } else {
-                    alert(result);
-                }
-            });
+            .then(response => response.text());
         btn.closest('.member-info').style.display = 'none';
     }));
 
@@ -49,15 +37,7 @@ function addActions() {
         const username = btn.value;
 
         fetch(`/api/teams/${teamId}/requests/decline/${username}`, {method: 'DELETE'})
-            .then(response => response.text())
-            .then(result => {
-                if (result === 'OK') {
-                    // Hide the request
-
-                } else {
-                    alert(result);
-                }
-            });
+            .then(response => response.text());
         btn.closest('.member-info').style.display = 'none';
     }));
 }
